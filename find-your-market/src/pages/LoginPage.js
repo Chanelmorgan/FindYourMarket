@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import '../styles/Login.css'; 
 import stallsImage from '../assets/images/stalls.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Popup from '../components/Popup.js';
 
 function Login() {
-  // Local state to store form values
+  const navigate = useNavigate(); 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showPopup, setShowPopup] = useState(false); 
 
   // Handle form submission
   const handleSubmit = (e) => {
@@ -19,9 +21,13 @@ function Login() {
       return;
     }
 
-    // Clear error if fields are valid
     setError('');
-    alert('Login successful');
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false); 
+    navigate('/');  
   };
 
   return (
@@ -57,7 +63,12 @@ function Login() {
           <Link to="/CreateAccountPage" className="login-links">Create a new account</Link>
         </form> 
       </div> 
-      
+      <Popup 
+        show={showPopup} 
+        onClose={handleClosePopup} 
+        title="Login Successful!" 
+        message="You have successfully logged in."
+      />
         <img src={stallsImage} alt="Stalls" className="stalls" />
       
     </div>
