@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Select from 'react-select';  // Import react-select
 import '../styles/CreateAccount.css'; 
 import stallsImage from '../assets/images/stalls.png';
 import { Link } from 'react-router-dom';
@@ -9,30 +10,44 @@ function CreateAccountPage() {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [addressLine1, setAddressLine1] = useState('');
+  const [addressLine2, setAddressLine2] = useState('');
+  const [postCode, setPostCode] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [accountType, setAccountType] = useState(''); 
+  const [publicRole, setPublicRole] = useState(null);      // For Public dropdown
+  const [staffType, setStaffType] = useState(null);   // For staff dropdown
   const [error, setError] = useState('');
 
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Basic validation
-    if (!firstName || !lastName || !email || !phone || !password || !confirmPassword) {
-      setError('Please fill in all fields.');
+    if (!firstName || !lastName || !email || !phone || !addressLine1 || !postCode || !password || !confirmPassword || !accountType) {
+      setError('Please fill in all required fields.');
       return;
     }
 
-    // Check if passwords match
     if (password !== confirmPassword) {
       setError('Passwords do not match.');
       return;
     }
 
-    // Clear error if fields are valid
     setError('');
     alert('Account created successfully!');
   };
+
+  // Options for searchable dropdowns
+  const publicRoleOptions = [
+    { value: 'Customer', label: 'Customer' },
+    { value: 'Subscriber', label: 'Subscriber' }
+  ];
+
+  const staffTypeOptions = [
+    { value: 'Retailer', label: 'Retailer' },
+    { value: 'Wholesaler', label: 'Wholesaler' }
+  ];
 
   return (
     <div className="create-account-container">
@@ -87,6 +102,39 @@ function CreateAccountPage() {
           </div>
 
           <div className="input-group">
+            <label htmlFor="address-line-1">Address Line 1</label>
+            <input
+              type="text"
+              id="address-line-1"
+              placeholder="Address Line 1"
+              value={addressLine1}
+              onChange={(e) => setAddressLine1(e.target.value)}
+            />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="address-line-2">Address Line 2</label>
+            <input
+              type="text"
+              id="address-line-2"
+              placeholder="Address Line 2"
+              value={addressLine2}
+              onChange={(e) => setAddressLine2(e.target.value)}
+            />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="post-code">Post Code</label>
+            <input
+              type="text"
+              id="post-code"
+              placeholder="Post Code"
+              value={postCode}
+              onChange={(e) => setPostCode(e.target.value)}
+            />
+          </div>
+
+          <div className="input-group">
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -108,12 +156,64 @@ function CreateAccountPage() {
             />
           </div>
 
+          <div className="input-group">
+            <label>Account Type</label>
+            <div className="radio-group">
+              <label>
+                <input
+                  type="radio"
+                  value="Public"
+                  checked={accountType === 'Public'}
+                  onChange={(e) => setAccountType(e.target.value)}
+                />
+                Public
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  value="Staff"
+                  checked={accountType === 'Staff'}
+                  onChange={(e) => setAccountType(e.target.value)}
+                />
+                Staff
+              </label>
+            </div>
+          </div> 
+
+          {accountType === 'Public' && (
+            <div className="input-group">
+              <label htmlFor="public-role">Location Preferences</label>
+              <Select
+                id="public-role"
+                options={publicRoleOptions}
+                value={publicRole}
+                onChange={setPublicRole}
+                placeholder="Select "
+                isSearchable={true}
+              />
+            </div>
+          )}
+
+          {accountType === 'Staff' && (
+            <div className="input-group">
+              <label htmlFor="staff-type">Stall Name</label>
+              <Select
+                id="staff-type"
+                options={staffTypeOptions}
+                value={staffType}
+                onChange={setStaffType}
+                placeholder="Stall Name"
+                isSearchable={true}
+              />
+            </div>
+          )}
+
           <button type="submit" className="create-account-btn">Create Account</button>
           <Link to="/Login" className="login-links">Login</Link>
         </form> 
       </div> 
       
-      <img src={stallsImage} alt="Stalls" className="stalls" />
+      <img src={stallsImage} alt="Stalls" className="create-account-stalls" />
     </div>
   );
 }
