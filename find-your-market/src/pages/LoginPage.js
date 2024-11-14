@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/Login.css'; 
+import stallsImage from '../assets/images/stalls.png';
+import { Link } from 'react-router-dom';
 
 function Login() {
   // Local state to store form values
@@ -48,12 +50,19 @@ function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <p className="password-links">Forgot password?</p>
           </div>
 
           <button type="submit" className="login-btn">Login</button>
-        </form>
-      </div>
+          <Link to="/CreateAccountPage" className="login-links">Create a new account</Link>
+        </form> 
+      </div> 
+      
+        <img src={stallsImage} alt="Stalls" className="stalls" />
+      
     </div>
+
+    
   );
 }
 
