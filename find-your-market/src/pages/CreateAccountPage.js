@@ -35,8 +35,8 @@ function CreateAccountPage() {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-box">
+    <div className="create-account-container">
+      <div className="create-account-box">
         <h2>Create Account</h2>
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit}>
@@ -46,7 +46,7 @@ function CreateAccountPage() {
               <input
                 type="text"
                 id="first-name"
-                placeholder="Enter your first name"
+                placeholder="First name"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               />
@@ -57,7 +57,7 @@ function CreateAccountPage() {
               <input
                 type="text"
                 id="last-name"
-                placeholder="Enter your last name"
+                placeholder="Last Name"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
@@ -69,7 +69,7 @@ function CreateAccountPage() {
             <input
               type="email"
               id="email"
-              placeholder="Enter your email"
+              placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -80,7 +80,7 @@ function CreateAccountPage() {
             <input
               type="tel"
               id="phone"
-              placeholder="Enter your phone number"
+              placeholder="Phone Number"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
             />
@@ -91,7 +91,7 @@ function CreateAccountPage() {
             <input
               type="password"
               id="password"
-              placeholder="Enter your password"
+              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -102,13 +102,13 @@ function CreateAccountPage() {
             <input
               type="password"
               id="confirm-password"
-              placeholder="Confirm your password"
+              placeholder="Confirm Password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
 
-          <button type="submit" className="login-btn">Create Account</button>
+          <button type="submit" className="create-account-btn">Create Account</button>
           <Link to="/Login" className="login-links">Login</Link>
         </form> 
       </div> 
