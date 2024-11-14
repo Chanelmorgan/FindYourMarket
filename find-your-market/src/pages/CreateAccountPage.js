@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import '../styles/Login.css'; 
+import '../styles/CreateAccount.css'; 
 import stallsImage from '../assets/images/stalls.png';
 import { Link } from 'react-router-dom';
 
 function CreateAccountPage() {
   // Local state to store form values
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
 
   // Handle form submission
@@ -14,14 +18,20 @@ function CreateAccountPage() {
     e.preventDefault();
     
     // Basic validation
-    if (!email || !password) {
+    if (!firstName || !lastName || !email || !phone || !password || !confirmPassword) {
       setError('Please fill in all fields.');
+      return;
+    }
+
+    // Check if passwords match
+    if (password !== confirmPassword) {
+      setError('Passwords do not match.');
       return;
     }
 
     // Clear error if fields are valid
     setError('');
-    alert('Login successful');
+    alert('Account created successfully!');
   };
 
   return (
@@ -30,6 +40,30 @@ function CreateAccountPage() {
         <h2>Create Account</h2>
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit}>
+          <div className="input-group name-group">
+            <div className="input-group">
+              <label htmlFor="first-name">First Name</label>
+              <input
+                type="text"
+                id="first-name"
+                placeholder="Enter your first name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="last-name">Last Name</label>
+              <input
+                type="text"
+                id="last-name"
+                placeholder="Enter your last name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </div>
+          </div>
+
           <div className="input-group">
             <label htmlFor="email">Email</label>
             <input
@@ -42,6 +76,17 @@ function CreateAccountPage() {
           </div>
 
           <div className="input-group">
+            <label htmlFor="phone">Phone</label>
+            <input
+              type="tel"
+              id="phone"
+              placeholder="Enter your phone number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </div>
+
+          <div className="input-group">
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -50,19 +95,26 @@ function CreateAccountPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <p className="password-links">Forgot password?</p>
           </div>
 
-          <button type="submit" className="login-btn">Login</button>
-          <Link to="/CreateAccountPage" className="login-links">Create a new account</Link>
+          <div className="input-group">
+            <label htmlFor="confirm-password">Confirm Password</label>
+            <input
+              type="password"
+              id="confirm-password"
+              placeholder="Confirm your password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          </div>
+
+          <button type="submit" className="login-btn">Create Account</button>
+          <Link to="/Login" className="login-links">Login</Link>
         </form> 
       </div> 
       
-        <img src={stallsImage} alt="Stalls" className="stalls" />
-      
+      <img src={stallsImage} alt="Stalls" className="stalls" />
     </div>
-
-    
   );
 }
 
