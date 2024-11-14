@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Select from 'react-select';  // Import react-select
 import '../styles/CreateAccount.css'; 
 import stallsImage from '../assets/images/stalls.png';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; 
+import Popup from '../components/Popup.js';
 
 function CreateAccountPage() {
   // Local state to store form values
@@ -19,6 +20,7 @@ function CreateAccountPage() {
   const [publicRole, setPublicRole] = useState(null);      // For Public dropdown
   const [staffType, setStaffType] = useState(null);   // For staff dropdown
   const [error, setError] = useState('');
+  const [showPopup, setShowPopup] = useState(false); 
 
   // Handle form submission
   const handleSubmit = (e) => {
@@ -35,7 +37,7 @@ function CreateAccountPage() {
     }
 
     setError('');
-    alert('Account created successfully!');
+    setShowPopup(true);
   };
 
   // Options for searchable dropdowns
@@ -212,6 +214,12 @@ function CreateAccountPage() {
           <Link to="/Login" className="login-links">Login</Link>
         </form> 
       </div> 
+      <Popup 
+        show={showPopup} 
+        onClose={() => setShowPopup(false)} 
+        title="Account Created!" 
+        message="Your account has been successfully created."
+      />
       
       <img src={stallsImage} alt="Stalls" className="create-account-stalls" />
     </div>
