@@ -219,12 +219,16 @@ function CreateAccountPage() {
           <Link to="/Login" className="login-links">Login</Link>
         </form> 
       </div> 
-      <Popup 
-        show={showPopup} 
-        onClose={handleClosePopup} 
-        title="Account Created!" 
+    
+
+<Popup
+        show={showPopup}
+        onClose={handleClosePopup}
+        title="Account Created!"
         message="Your account has been successfully created."
-      />
+        buttonText="Okay"
+        onConfirm={handleClosePopup}
+      /> 
       
       <img src={stallsImage} alt="Stalls" className="create-account-stalls" />
     </div>

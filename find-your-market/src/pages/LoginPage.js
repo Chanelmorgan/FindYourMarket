@@ -63,12 +63,17 @@ function Login() {
           <Link to="/CreateAccountPage" className="login-links">Create a new account</Link>
         </form> 
       </div> 
-      <Popup 
-        show={showPopup} 
-        onClose={handleClosePopup} 
-        title="Login Successful!" 
-        message="You have successfully logged in."
-      />
+    
+
+<Popup
+        show={showPopup}
+        onClose={handleClosePopup}
+        title="Login Successful!"
+        message="Login was successful"
+        buttonText="Okay"
+        onConfirm={handleClosePopup}
+      /> 
+
         <img src={stallsImage} alt="Stalls" className="stalls" />
       
     </div>

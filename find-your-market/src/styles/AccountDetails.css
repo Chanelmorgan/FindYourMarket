@@ -1,13 +1,47 @@
 .container-account-details {
-  max-width: 600px;
+  max-width: 900px;
   margin: auto;
   padding: 20px;
   font-family: Arial, sans-serif;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding-top: 70px;
+  padding-top: 80px;
 }
+
+.header-account-details {
+  display: flex;
+  justify-content: space-between;  
+  align-items: center;             
+  width: 100%;                    
+  margin-bottom: 20px;
+}
+
+.headerText {
+  font-size: 24px;
+  text-align: center; 
+  flex-grow: 1;  
+}
+.logoutButton {
+  display: flex;
+  align-items: center;
+  background-color: #f44336; 
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.logoutButton:hover {
+  background-color: #d32f2f; 
+}
+
+.logoutButton svg {
+  margin-right: 8px;
+}
+
 
 .detailGroup {
   display: flex;
@@ -64,8 +98,8 @@ select {
 }
 
 .profilePhoto {
-  width: 180px; 
-  height: 180px; 
+  width: 150px; 
+  height: 150px; 
   border-radius: 50%; 
   object-fit: cover; 
   border: 2px solid #ccc;
