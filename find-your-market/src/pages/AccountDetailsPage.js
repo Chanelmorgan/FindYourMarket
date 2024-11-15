@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { FaEdit, FaSave, FaPlus } from "react-icons/fa";
+import { FaEdit, FaSave, FaPlus, FaSignOutAlt } from "react-icons/fa";
 import "../styles/AccountDetails.css";
+import Popup from "../components/Popup"; 
+import { useNavigate } from "react-router-dom";
 
 const AccountDetails = () => {
   const [user, setUser] = useState({
@@ -65,6 +67,23 @@ const AccountDetails = () => {
       reader.readAsDataURL(file);
     }
   };
+  const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+  const navigate = useNavigate(); // React Router hook for navigation
+
+  const handleLogoutClick = () => {
+    setShowLogoutPopup(true); // Show the logout confirmation popup
+  };
+
+  const handleLogoutConfirm = () => {
+    setShowLogoutPopup(false); // Close the popup 
+    console.log("Navigating to login page...");
+
+    navigate("/Login"); // Navigate to login page
+  };
+
+  const handleLogoutCancel = () => {
+    setShowLogoutPopup(false); // Close the popup without logging out
+  };
 
   const addStall = () => {
     const newStall = {
@@ -118,8 +137,21 @@ const AccountDetails = () => {
 
   return (
     <div className="container-account-details">
-      <h1>Account Details</h1>
-
+       
+      <div className="header-account-details">
+        <div className="headerText">Account Details</div>
+        <button className="logoutButton" onClick={handleLogoutClick}>
+          <FaSignOutAlt /> Logout
+        </button>
+      </div>  
+      <Popup
+        show={showLogoutPopup}
+        onClose={handleLogoutCancel}
+        title="Logout Confirmation"
+        message="Are you sure you want to log out?"
+        buttonText="Yes, log me out"
+        onConfirm={handleLogoutConfirm}
+      />
       <div className="profileSection">
         <div className="profilePhotoWrapper">
           <img
