@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaEdit, FaSave } from "react-icons/fa";
+import { FaEdit, FaSave, FaPlus } from "react-icons/fa";
 import "../styles/AccountDetails.css";
 
 const AccountDetailsPage = () => {
@@ -12,10 +12,26 @@ const AccountDetailsPage = () => {
     addressLine2: "Apt 4B",
     postcode: "12345",
     password: "password123",
-    accountType: "Public",
+    accountType: "Staff", 
+    locationPreference: "Nearby", 
+    visitPreference: "Daily",  
+    stalls: [
+      {
+        id: 1,
+        stallName: "Fresh Produce",
+        marketName: "Green Market",
+        location: "Norwich",
+      },
+      {
+        id: 2,
+        stallName: "Organic Veg",
+        marketName: "Farmers Market",
+        location: "London",
+      },
+    ], 
   });
 
-  const [editingField, setEditingField] = useState(null); 
+  const [editingField, setEditingField] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,8 +41,31 @@ const AccountDetailsPage = () => {
     }));
   };
 
+  const handleStallInputChange = (index, e) => {
+    const { name, value } = e.target;
+    const updatedStalls = [...user.stalls];
+    updatedStalls[index][name] = value;
+    setUser((prevUser) => ({
+      ...prevUser,
+      stalls: updatedStalls,
+    }));
+  };
+
+  const addStall = () => {
+    const newStall = {
+      id: user.stalls.length + 1,
+      stallName: "",
+      marketName: "",
+      location: "",
+    };
+    setUser((prevUser) => ({
+      ...prevUser,
+      stalls: [...prevUser.stalls, newStall],
+    }));
+  };
+
   const toggleEditField = (field) => {
-    setEditingField(editingField === field ? null : field); 
+    setEditingField(editingField === field ? null : field);
   };
 
   const renderField = (label, fieldName, type = "text") => {
@@ -74,6 +113,7 @@ const AccountDetailsPage = () => {
       {renderField("Postcode", "postcode")}
       {renderField("Password", "password", "password")}
 
+    
       <div className="detailGroup">
         <label>Account Type:</label>
         {editingField === "accountType" ? (
@@ -104,6 +144,139 @@ const AccountDetailsPage = () => {
           </>
         )}
       </div>
+
+      {user.accountType === "Public" && (
+        <>
+          <div className="detailGroup">
+            <label>Location Preference:</label>
+            {editingField === "locationPreference" ? (
+              <>
+                <select
+                  name="locationPreference"
+                  value={user.locationPreference}
+                  onChange={handleInputChange}
+                  className="input"
+                >
+                  <option value="Nearby">Nearby</option>
+                  <option value="International">International</option>
+                  <option value="Remote">Remote</option>
+                </select>
+                <FaSave
+                  className="editIcon"
+                  onClick={() => toggleEditField("locationPreference")}
+                  title="Save"
+                />
+              </>
+            ) : (
+              <>
+                <p>{user.locationPreference}</p>
+                <FaEdit
+                  className="editIcon"
+                  onClick={() => toggleEditField("locationPreference")}
+                  title="Edit"
+                />
+              </>
+            )}
+          </div>
+
+          <div className="detailGroup">
+            <label>Visit Preference:</label>
+            {editingField === "visitPreference" ? (
+              <>
+                <select
+                  name="visitPreference"
+                  value={user.visitPreference}
+                  onChange={handleInputChange}
+                  className="input"
+                >
+                  <option value="Daily">Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+                <FaSave
+                  className="editIcon"
+                  onClick={() => toggleEditField("visitPreference")}
+                  title="Save"
+                />
+              </>
+            ) : (
+              <>
+                <p>{user.visitPreference}</p>
+                <FaEdit
+                  className="editIcon"
+                  onClick={() => toggleEditField("visitPreference")}
+                  title="Edit"
+                />
+              </>
+            )}
+          </div>
+        </>
+      )}
+
+      {user.accountType === "Staff" && (
+        <>
+          <h2>Stalls</h2>
+          {user.stalls.map((stall, index) => (
+            <div key={stall.id} className="stallGroup">
+              <div className="detailGroup">
+                <label>Stall Name:</label>
+                <input
+                  type="text"
+                  name="stallName"
+                  value={stall.stallName}
+                  onChange={(e) => handleStallInputChange(index, e)}
+                  className="input"
+                />
+                <FaSave
+                  className="editIcon"
+                  onClick={() => {}}
+                  title="Save"
+                />
+              </div>
+
+              <div className="detailGroup">
+                <label>Market Name:</label>
+                <input
+                  type="text"
+                  name="marketName"
+                  value={stall.marketName}
+                  onChange={(e) => handleStallInputChange(index, e)}
+                  className="input"
+                />
+                <FaSave
+                  className="editIcon"
+                  onClick={() => {}}
+                  title="Save"
+                />
+              </div>
+
+              <div className="detailGroup">
+                <label>Location:</label>
+                <input
+                  type="text"
+                  name="location"
+                  value={stall.location}
+                  onChange={(e) => handleStallInputChange(index, e)}
+                  className="input"
+                />
+                <FaSave
+                  className="editIcon"
+                  onClick={() => {}}
+                  title="Save"
+                />
+              </div>
+            </div>
+          ))}
+
+          <div className="addStallButton">
+            <FaPlus
+              className="addIcon"
+              onClick={addStall}
+              title="Add New Stall"
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 };
