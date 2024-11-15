@@ -1,54 +1,91 @@
-.container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding-top: 70px;
-  }
-  
-  .detailGroup {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
-  }
-  
-  .detailGroup label {
-    font-weight: bold;
-    flex: 1;
-  }
-  
-  .detailGroup p {
-    margin: 4px 0;
-    flex: 2;
-  }
-  
-  .input,
-  .textarea,
-  select {
-    width: 100%;
-    padding: 8px;
-    font-size: 16px;
-    margin-top: 4px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    flex: 2;
-  }
-  
-  .editIcon {
-    color: #007bff;
-    cursor: pointer;
-    margin-left: 8px;
-  }
-  
-  .editIcon:hover {
-    color: #0056b3;
-  }
-  
-  .actions {
-    display: flex;
-    justify-content: space-between;
-  }
+.container-account-details {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding-top: 70px;
+}
+
+.detailGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.detailGroup label {
+  font-weight: bold;
+  flex: 1;
+}
+
+.detailGroup p {
+  margin: 4px 0;
+  flex: 2;
+}
+
+.input,
+.textarea,
+select {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  margin-top: 4px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  flex: 2;
+}
+
+.editIcon {
+  color: #007bff;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.editIcon:hover {
+  color: #0056b3;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profileSection {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profilePhotoWrapper {
+  position: relative;
+}
+
+.profilePhoto {
+  width: 180px; 
+  height: 180px; 
+  border-radius: 50%; 
+  object-fit: cover; 
+  border: 2px solid #ccc;
+}
+
+.editProfilePhoto {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.fileInput {
+  display: none; 
+}
+
+.nameSection {
+  margin-left: 20px;
+}

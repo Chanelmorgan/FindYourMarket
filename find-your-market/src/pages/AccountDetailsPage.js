@@ -15,6 +15,7 @@ const AccountDetails = () => {
     accountType: "Staff", 
     locationPreference: "Nearby", 
     visitPreference: "Daily",  
+    profilePhoto: "/path/to/default/profile-photo.jpg",
     stalls: [
       {
         id: 1,
@@ -49,6 +50,20 @@ const AccountDetails = () => {
       ...prevUser,
       stalls: updatedStalls,
     }));
+  };
+
+  const handleProfilePhotoChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setUser((prevUser) => ({
+          ...prevUser,
+          profilePhoto: reader.result, 
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const addStall = () => {
@@ -102,10 +117,33 @@ const AccountDetails = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container-account-details">
       <h1>Account Details</h1>
-      {renderField("First Name", "firstName")}
-      {renderField("Last Name", "lastName")}
+
+      <div className="profileSection">
+        <div className="profilePhotoWrapper">
+          <img
+            src={user.profilePhoto}
+            alt="Profile"
+            className="profilePhoto"
+          />
+          <label htmlFor="profilePhotoInput" className="editProfilePhoto">
+            <FaEdit />
+          </label>
+          <input
+            type="file"
+            id="profilePhotoInput"
+            className="fileInput"
+            onChange={handleProfilePhotoChange}
+          />
+        </div>
+
+        <div className="nameSection">
+          {renderField("First Name", "firstName")}
+          {renderField("Last Name", "lastName")}
+        </div>
+      </div>
+
       {renderField("Email", "email", "email")}
       {renderField("Phone", "phone", "tel")}
       {renderField("Address Line 1", "addressLine1")}
@@ -113,7 +151,6 @@ const AccountDetails = () => {
       {renderField("Postcode", "postcode")}
       {renderField("Password", "password", "password")}
 
-    
       <div className="detailGroup">
         <label>Account Type:</label>
         {editingField === "accountType" ? (
