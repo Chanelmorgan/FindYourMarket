@@ -112,7 +112,16 @@ const AppSettings = () => {
             </a>
           </li>
         </ul>
-      </section>
+      </section> 
+
+      <button
+            onClick={() => {
+                // TODO: Add save functionality here
+            }}
+            className="settings-button"
+            >
+            Save
+     </button>
     </div>
   );
 };
