@@ -1,0 +1,69 @@
+@import 'variables.css';
+  
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--darkgreen);
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 1000; 
+    height: 60px; 
+  }
+  
+  .hamburger {
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+
+  .sideMenu {
+    position: fixed;
+    top: 0;
+    left: -250px; 
+    width: 250px;
+    height: 100%;
+    background-color: var(--darkgreen);
+    transition: left 0.3s ease; 
+    z-index: 999; 
+    padding-top: 60px;
+  }
+  
+  .sideMenu.open {
+    left: 0; 
+  }
+  
+  
+  .closeIcon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+  .menuItems {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .menuItems li {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--lightgreen);
+  }
+  
+  .menuItems li a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    display: block;
+  }
+  
+
+  .menuItems li a:hover {
+    background-color: var(--lightgreen);
+  }

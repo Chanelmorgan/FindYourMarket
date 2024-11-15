@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaEdit, FaSave, FaPlus } from "react-icons/fa";
 import "../styles/AccountDetails.css";
 
-const AccountDetailsPage = () => {
+const AccountDetails = () => {
   const [user, setUser] = useState({
     firstName: "Chanel",
     lastName: "Morgan",
@@ -281,4 +281,4 @@ const AccountDetailsPage = () => {
   );
 };
 
-export default AccountDetailsPage;
+export default AccountDetails;
