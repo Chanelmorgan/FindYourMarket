@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaBars, FaTimes, FaChevronRight,FaSignOutAlt } from "react-icons/fa"; 
+import { FaBars, FaTimes, FaChevronRight, FaSignOutAlt } from "react-icons/fa";
 import "../styles/Header.css";
 import Popup from "../components/Popup"; 
 import { useNavigate } from "react-router-dom";
@@ -21,6 +21,7 @@ const Header = () => {
       [market]: !prev[market],
     }));
   };
+  
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
   const navigate = useNavigate(); 
 
@@ -31,7 +32,6 @@ const Header = () => {
   const handleLogoutConfirm = () => {
     setShowLogoutPopup(false); 
     console.log("Navigating to login page...");
-
     navigate("/Login"); 
   };
 
@@ -53,18 +53,18 @@ const Header = () => {
             <a href="/" onClick={toggleMenu}>Home</a>
           </li>
           <li>
-            <a onClick={toggleMarketsDropdown}>
+            <button className="menuButton" onClick={toggleMarketsDropdown}>
               Markets
               <FaChevronRight className={`dropdown-arrow ${marketsOpen ? "open" : ""}`} />
-            </a>
+            </button>
             <ul className={`dropdown ${marketsOpen ? "open" : ""}`}>
               <li>
-                <a onClick={() => toggleStallsDropdown("market1")}>
+                <button className="menuButton" onClick={() => toggleStallsDropdown("market1")}>
                   Market 1
                   <FaChevronRight
                     className={`dropdown-arrow ${stallsOpen.market1 ? "open" : ""}`}
                   />
-                </a>
+                </button>
                 <ul className={`stallsDropdown ${stallsOpen.market1 ? "open" : ""}`}>
                   <li>Stall 1</li>
                   <li>Stall 2</li>
@@ -72,12 +72,12 @@ const Header = () => {
                 </ul>
               </li>
               <li>
-                <a onClick={() => toggleStallsDropdown("market2")}>
+                <button className="menuButton" onClick={() => toggleStallsDropdown("market2")}>
                   Market 2
                   <FaChevronRight
                     className={`dropdown-arrow ${stallsOpen.market2 ? "open" : ""}`}
                   />
-                </a>
+                </button>
                 <ul className={`stallsDropdown ${stallsOpen.market2 ? "open" : ""}`}>
                   <li>Stall A</li>
                   <li>Stall B</li>
@@ -94,20 +94,19 @@ const Header = () => {
           </li>
         </ul>
         <div className="logoutButton-header">
-          <button className="logoutButton-header-btn"onClick={handleLogoutClick}>
-          <FaSignOutAlt /> Logout
-            </button>
-            <Popup
-        show={showLogoutPopup}
-        onClose={handleLogoutCancel}
-        title="Logout Confirmation"
-        message="Are you sure you want to log out?"
-        buttonText="Yes, log me out"
-        onConfirm={handleLogoutConfirm}
-      />
+          <button className="logoutButton-header-btn" onClick={handleLogoutClick}>
+            <FaSignOutAlt /> Logout
+          </button>
+          <Popup
+            show={showLogoutPopup}
+            onClose={handleLogoutCancel}
+            title="Logout Confirmation"
+            message="Are you sure you want to log out?"
+            buttonText="Yes, log me out"
+            onConfirm={handleLogoutConfirm}
+          />
         </div>
       </div>
-      
     </header>
   );
 };

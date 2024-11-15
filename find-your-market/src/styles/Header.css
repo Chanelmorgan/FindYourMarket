@@ -49,6 +49,24 @@
   padding-left: 0;
 }
 
+.menuButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  padding: 15px 20px;
+  cursor: pointer;
+}
+
+.menuButton:hover {
+  background-color: var(--lightgreen);
+}
+
 .menuItems li {
   position: relative; 
   padding: 15px 20px;
@@ -69,7 +87,6 @@
   background-color: var(--lightgreen);
 }
 
-/* Dropdown Arrow */
 .dropdown-arrow {
   font-size: 16px;
   transition: transform 0.3s ease;
