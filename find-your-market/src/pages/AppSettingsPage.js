@@ -19,7 +19,7 @@ const AppSettings = () => {
 
       <section className="settings-section">
         <h2 className="settings-section-heading">Notifications</h2>
-        <div className="radio-group">
+        <div className="radio-group-settings">
           <label>
             <input
               type="radio"

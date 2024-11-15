@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage';
 import CreateAccountPage from './pages/CreateAccountPage';
 import AccountDetailsPage from './pages/AccountDetailsPage';
 import AppSettings from './pages/AppSettingsPage';
+import Markets from './pages/MarketsPage'; 
 
 
 
@@ -19,7 +20,7 @@ function App() {
           <Route path="/CreateAccountPage" element={<CreateAccountPage />} />
           <Route path="/AccountDetailsPage" element={<AccountDetailsPage/>} />
           <Route path="/AppSettings" element={<AppSettings/>} />
-          
+          <Route path="/Markets" element={<Markets/>} />
         </Routes> 
 
       </div>

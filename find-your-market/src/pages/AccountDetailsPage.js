@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaEdit, FaSave } from "react-icons/fa";
-import "../styles/AccountDetailsPage.css";
+import "../styles/AccountDetails.css";
 
 const AccountDetailsPage = () => {
   const [user, setUser] = useState({
