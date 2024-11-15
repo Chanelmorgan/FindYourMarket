@@ -68,21 +68,21 @@ const AccountDetails = () => {
     }
   };
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
-  const navigate = useNavigate(); // React Router hook for navigation
+  const navigate = useNavigate(); 
 
   const handleLogoutClick = () => {
-    setShowLogoutPopup(true); // Show the logout confirmation popup
+    setShowLogoutPopup(true); 
   };
 
   const handleLogoutConfirm = () => {
-    setShowLogoutPopup(false); // Close the popup 
+    setShowLogoutPopup(false); 
     console.log("Navigating to login page...");
 
-    navigate("/Login"); // Navigate to login page
+    navigate("/Login"); 
   };
 
   const handleLogoutCancel = () => {
-    setShowLogoutPopup(false); // Close the popup without logging out
+    setShowLogoutPopup(false); 
   };
 
   const addStall = () => {

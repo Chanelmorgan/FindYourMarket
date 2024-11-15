@@ -1,69 +1,168 @@
 @import 'variables.css';
-  
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: var(--darkgreen);
-    color: white;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 10px 20px;
-    z-index: 1000; 
-    height: 60px; 
-  }
-  
-  .hamburger {
-    font-size: 30px;
-    cursor: pointer;
-  }
-  
 
-  .sideMenu {
-    position: fixed;
-    top: 0;
-    left: -250px; 
-    width: 250px;
-    height: 100%;
-    background-color: var(--darkgreen);
-    transition: left 0.3s ease; 
-    z-index: 999; 
-    padding-top: 60px;
-  }
-  
-  .sideMenu.open {
-    left: 0; 
-  }
-  
-  
-  .closeIcon {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 30px;
-    cursor: pointer;
-  }
-  
-  .menuItems {
-    list-style: none;
-    padding-left: 0;
-  }
-  
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--darkgreen);
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 20px;
+  z-index: 1000; 
+  height: 60px; 
+}
+
+.hamburger {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.sideMenu {
+  position: fixed;
+  top: 0;
+  left: -250px; 
+  width: 250px;
+  height: 100%;
+  background-color: var(--darkgreen);
+  transition: left 0.3s ease; 
+  z-index: 999; 
+  padding-top: 60px;
+}
+
+.sideMenu.open {
+  left: 0; 
+}
+
+.closeIcon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.menuItems {
+  list-style: none;
+  padding-left: 0;
+}
+
+.menuItems li {
+  position: relative; 
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--lightgreen);
+  cursor: pointer; 
+}
+
+.menuItems li a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.menuItems li a:hover {
+  background-color: var(--lightgreen);
+}
+
+/* Dropdown Arrow */
+.dropdown-arrow {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(90deg); 
+}
+
+.menuItems li .dropdown {
+  display: none; 
+  list-style: none;
+  padding-left: 20px;
+  margin: 0; 
+}
+
+.menuItems li .dropdown li {
+  padding: 10px 20px; 
+  border-bottom: none; 
+}
+
+.menuItems li .dropdown.open {
+  display: block; 
+}
+
+.menuItems li .dropdown .stallsDropdown {
+  display: none; 
+  list-style: none;
+  padding-left: 20px; 
+}
+
+.menuItems li .dropdown .stallsDropdown.open {
+  display: block; 
+}
+
+.menuItems li .dropdown .stallsDropdown li {
+  padding: 10px 20px;
+  border-bottom: none; 
+  background-color: var(--lightgreen);
+  color: var(--darkgreen);
+}
+
+.menuItems li .dropdown .stallsDropdown li:hover {
+  background-color: var(--darkgreen);
+  color: var(--lightgreen);
+}
+
+
+.dropdown-arrow {
+  font-size: 16px;
+  margin-left: auto; 
+  transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(90deg); 
+}
+
+.logoutButton-header{
+  position: absolute;
+  bottom: 20px; 
+  right: 20px; 
+}
+
+.logoutButton-header-btn{
+  display: flex;
+  align-items: center;
+  background-color: #f44336; 
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.logoutButton-header-btn svg {
+  margin-right: 8px;
+}
+
+.logoutButton-header-btn:hover {
+  background-color: var(--darkgreen);
+  color: var(--lightgreen);
+}
+
+
+@media (max-width: 768px) {
   .menuItems li {
-    padding: 15px 20px;
-    border-bottom: 1px solid var(--lightgreen);
+    font-size: 18px; 
   }
-  
-  .menuItems li a {
-    text-decoration: none;
-    color: white;
-    font-size: 20px;
-    display: block;
-  }
-  
 
-  .menuItems li a:hover {
-    background-color: var(--lightgreen);
+  .menuItems li .dropdown li {
+    font-size: 16px; 
   }
+}
+
