@@ -1,12 +1,13 @@
 import React from "react";
 import "../styles/Markets.css"; 
+import { Link } from "react-router-dom";
 
 const Markets = () => {
   const markets = [
-    { id: 1, name: "Market 1", logo: "https://banner2.cleanpng.com/20180403/aww/avhnjhtse.webp" },
-    { id: 2, name: "Market 2 ", logo: "https://banner2.cleanpng.com/20180403/aww/avhnjhtse.webp" },
-    { id: 3, name: "Market 3", logo: "https://banner2.cleanpng.com/20180403/aww/avhnjhtse.webp" },
-    { id: 4, name: "Market 4", logo: "https://banner2.cleanpng.com/20180403/aww/avhnjhtse.webp" }
+    { id: 1, name: "Market 1", logo: "https://banner2.cleanpng.com/20180403/aww/avhnjhtse.webp" , link: "/Market"},
+    { id: 2, name: "Market 2 ", logo: "https://banner2.cleanpng.com/20180403/aww/avhnjhtse.webp", link: "/Market" },
+    { id: 3, name: "Market 3", logo: "https://banner2.cleanpng.com/20180403/aww/avhnjhtse.webp", link: "/Market" },
+    { id: 4, name: "Market 4", logo: "https://banner2.cleanpng.com/20180403/aww/avhnjhtse.webp" , link: "/Market"}
   ];
 
 
@@ -25,8 +26,10 @@ const Markets = () => {
       <section className="market-list">
         {markets.map((market) => (
           <div key={market.id} className="market-item">
-            <img src={market.logo} alt={market.name} className="market-logo" />
-            <span className="market-name">{market.name}</span>
+            <Link to={market.link}>
+                <img src={market.logo} alt={market.name} className="market-logo" />
+                <span className="market-name">{market.name}</span>
+            </Link>
           </div>
         ))}
       </section>

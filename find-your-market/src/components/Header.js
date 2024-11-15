@@ -54,13 +54,13 @@ const Header = () => {
           </li>
           <li>
             <button className="menuButton" onClick={toggleMarketsDropdown}>
-              Markets
+             <a href="/Markets" >Markets</a>
               <FaChevronRight className={`dropdown-arrow ${marketsOpen ? "open" : ""}`} />
             </button>
             <ul className={`dropdown ${marketsOpen ? "open" : ""}`}>
               <li>
                 <button className="menuButton" onClick={() => toggleStallsDropdown("market1")}>
-                  Market 1
+                <a href="/Market" >Market 1</a>
                   <FaChevronRight
                     className={`dropdown-arrow ${stallsOpen.market1 ? "open" : ""}`}
                   />
@@ -73,7 +73,7 @@ const Header = () => {
               </li>
               <li>
                 <button className="menuButton" onClick={() => toggleStallsDropdown("market2")}>
-                  Market 2
+                <a href="/Market" >Market 2</a>
                   <FaChevronRight
                     className={`dropdown-arrow ${stallsOpen.market2 ? "open" : ""}`}
                   />
