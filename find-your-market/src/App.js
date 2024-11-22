@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
@@ -9,6 +9,7 @@ import Markets from './pages/MarketsPage';
 import Header from './components/Header';
 import Market from './components/Market'; 
 import StallPage from './pages/StallPage';
+import './styles/index.css';
 
 function AppContent() {
   const location = useLocation();
@@ -32,9 +33,42 @@ function AppContent() {
 }
 
 function App() {
+  const [isHighContrast, setHighContrast] = useState(
+    JSON.parse(localStorage.getItem('isHighContrast')) || false
+  );
+  const [isDyslexiaFriendly, setDyslexiaFriendly] = useState(
+    JSON.parse(localStorage.getItem('isDyslexiaFriendly')) || false
+  );
+
+  useEffect(() => {
+    document.body.classList.toggle('high-contrast', isHighContrast);
+    document.body.classList.toggle('dyslexia-friendly', isDyslexiaFriendly);
+  }, [isHighContrast, isDyslexiaFriendly]);
+
+  const toggleHighContrast = () => {
+    setHighContrast((prev) => {
+      const newValue = !prev;
+      localStorage.setItem('isHighContrast', JSON.stringify(newValue));
+      return newValue;
+    });
+  };
+
+  const toggleDyslexiaFriendly = () => {
+    setDyslexiaFriendly((prev) => {
+      const newValue = !prev;
+      localStorage.setItem('isDyslexiaFriendly', JSON.stringify(newValue));
+      return newValue;
+    });
+  };
   return (
     <Router>
       <AppContent />
+      <button onClick={toggleHighContrast}>
+        {isHighContrast ? 'Disable High Contrast Mode' : 'Enable High Contrast Mode'}
+      </button>
+      <button onClick={toggleDyslexiaFriendly}>
+        {isDyslexiaFriendly ? 'Disable Dyslexia-Friendly Mode' : 'Enable Dyslexia-Friendly Mode'}
+      </button>
     </Router>
   );
 }
