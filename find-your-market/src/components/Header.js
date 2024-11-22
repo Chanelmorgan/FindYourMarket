@@ -69,7 +69,6 @@ const Header = () => {
                 <a href="/Stall" >Stall 1</a>
                 <a href="/Stall" >Stall 2</a>
                 <a href="/Stall" >Stall 3</a>
-  
                 </ul>
               </li>
               <li>
