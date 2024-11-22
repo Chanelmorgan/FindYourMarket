@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Markets.css";
 import { Link } from "react-router-dom";
+import { FaChevronRight } from "react-icons/fa"; 
 
 const Markets = () => {
+  const [marketsOpen, setMarketsOpen] = useState(false); 
+
   const markets = [
     { id: 1, name: "Market 1", logo: "https://banner2.cleanpng.com/20180403/aww/avhnjhtse.webp", link: "/Market" },
     { id: 2, name: "Market 2", logo: "https://banner2.cleanpng.com/20180403/aww/avhnjhtse.webp", link: "/Market" },
@@ -30,8 +33,8 @@ const Markets = () => {
                 <div className="name-container">
                   <span className="markets-name">{market.name}</span>
                 </div>
-                <div className="click-circle">
-                  <span className="circle-text">Click here</span>
+                <div className="arrow-container" onClick={() => setMarketsOpen(!marketsOpen)}>
+                  <FaChevronRight className={`dropdown-arrow ${marketsOpen ? "open" : ""}`} /> {/* Use FaChevronRight */}
                 </div>
               </div>
             </Link>
