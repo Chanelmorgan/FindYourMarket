@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Markets.css"; 
+import "../styles/Markets.css";
 import { Link } from "react-router-dom";
 
 const Markets = () => {
@@ -14,26 +14,30 @@ const Markets = () => {
 
   return (
     <div className="markets-container">
-      
       <header className="markets-header">
         <h1 className="markets-title">Markets</h1>
         <button className="search-button">🔍</button>
       </header>
 
       <section className="markets-list">
-  {markets.map((market) => (
-    <div key={market.id} className="markets-item">
-      <Link to={market.link} className="markets-link">
-        <div className="logo-container">
-          <img src={market.logo} alt={market.name} className="markets-logo" />
-        </div>
-        <div className="name-container">
-          <span className="markets-name">{market.name}</span>
-        </div>
-      </Link>
-    </div>
-  ))}
-</section>
+        {markets.map((market) => (
+          <div key={market.id} className="markets-item">
+            <Link to={market.link} className="markets-link">
+              <div className="button-container">
+                <div className="logo-container">
+                  <img src={market.logo} alt={market.name} className="markets-logo" />
+                </div>
+                <div className="name-container">
+                  <span className="markets-name">{market.name}</span>
+                </div>
+                <div className="click-circle">
+                  <span className="circle-text">Click here</span>
+                </div>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </section>
 
       <section className="markets-map">
         <iframe
