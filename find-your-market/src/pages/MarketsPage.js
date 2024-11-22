@@ -33,7 +33,7 @@ const Markets = () => {
                 <div className="name-container">
                   <span className="markets-name">{market.name}</span>
                 </div>
-                <div className="arrow-container" onClick={() => setMarketsOpen(!marketsOpen)}>
+                <div className="arrow-container-markets" onClick={() => setMarketsOpen(!marketsOpen)}>
                   <FaChevronRight className={`dropdown-arrow ${marketsOpen ? "open" : ""}`} /> {/* Use FaChevronRight */}
                 </div>
               </div>

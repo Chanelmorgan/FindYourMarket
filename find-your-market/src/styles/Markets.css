@@ -60,7 +60,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 15px;
-  background-color: #fff; /* White background for each item */
+  background-color: #fff; 
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
@@ -87,7 +87,7 @@
   border-radius: 50%;
 }
 
-/* Name of the market */
+
 .name-container {
   flex-grow: 1;
 }
@@ -98,22 +98,22 @@
   color: #333;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden; /* Ensure long names don't overflow */
+  overflow: hidden; 
 }
 
-/* Container for the arrow icon */
+
 .arrow-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 35px; /* Slightly wider arrow container */
+  width: 35px;
 }
 
-.dropdown-arrow {
+.dropdown-arrow-markets {
   font-size: 1.5rem;
-  color: #3498db; /* Blue color for the arrow */
+  color: white; 
   cursor: pointer;
-  transition: transform 0.3s ease; /* Smooth rotation */
+  transition: transform 0.3s ease; 
 }
 
 
