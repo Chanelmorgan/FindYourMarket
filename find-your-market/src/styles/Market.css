@@ -1,60 +1,94 @@
-.market-container {
-    font-family: Arial, sans-serif;
+@import 'variables.css';
+.markets-container {
     padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
   }
   
-
-  .market-header {
+  .markets-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    padding-top: 50px;
   }
   
-  .market-title {
-    font-size: 1.5em;
+  .markets-title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  
+  .markets-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .markets-item {
+    width: 350px;
+    height: 100px; /* Adjust the height to fit the button */
+  }
+  
+  .markets-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensure space between name/logo and the click button */
+    padding: 10px;
+    background-color: var(--purple);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+  }
+  
+  .logo-container {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .markets-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .name-container {
+    flex-grow: 1;
+  }
+  
+  .markets-name {
+    font-size: 1.2rem;
+    font-weight: bold;
     color: #333;
+    background-color: transparent;
   }
   
-  .search-button {
-    background: none;
-    border: none;
-    font-size: 1.5em;
+  .click-circle {
+    background-color: var(--purple);
+    border-radius: 50%;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
   }
   
-  
-  .market-list {
-    margin-bottom: 20px;
+  .circle-text {
+    color: white;
+    font-size: 0.8rem;
   }
-  
-  .market-item {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .market-logo {
-    width: 50px;
-    height: 50px;
-    margin-right: 15px;
-    border-radius: 5px;
-  }
-  
-  .market-name {
-    font-size: 1.2em;
-    color: #555;
-  }
-  
- 
-  .market-map iframe {
-    width: 100%;
-    height: 300px;
-    border-radius: 5px;
+
+  .search-button{
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
   }
