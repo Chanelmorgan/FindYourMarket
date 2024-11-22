@@ -1,11 +1,10 @@
+@import 'variables.css';
+
 .container-account-details {
   max-width: 900px;
   margin: auto;
   padding: 20px;
-  font-family: Arial, sans-serif;
-  border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding-top: 80px;
 }
 
@@ -18,14 +17,15 @@
 }
 
 .headerText {
-  font-size: 24px;
+  font-size: 40px;
   text-align: center; 
-  flex-grow: 1;  
+  flex-grow: 1; 
+  font-weight: bold; 
 }
 .logoutButton {
   display: flex;
   align-items: center;
-  background-color: #f44336; 
+  background-color: var(--purple); 
   color: white;
   border: none;
   padding: 8px 16px;
@@ -73,13 +73,14 @@ select {
 }
 
 .editIcon {
-  color: #007bff;
+  color: var(--purple);
   cursor: pointer;
   margin-left: 8px;
 }
 
 .editIcon:hover {
-  color: #0056b3;
+ color:#bdafee ;
+  
 }
 
 .actions {
@@ -122,4 +123,13 @@ select {
 
 .nameSection {
   margin-left: 20px;
+}
+
+.section-box{
+  border: 4px solid  var(--coral);
+  border-radius: 8px;
+  background-color: #ffede9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  padding: 20px;
 }

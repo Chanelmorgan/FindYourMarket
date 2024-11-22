@@ -3,6 +3,7 @@ import { FaEdit, FaSave, FaPlus, FaSignOutAlt } from "react-icons/fa";
 import "../styles/AccountDetails.css";
 import Popup from "../components/Popup"; 
 import { useNavigate } from "react-router-dom";
+import profileImage from '../assets/images/profile.png';
 
 const AccountDetails = () => {
   const [user, setUser] = useState({
@@ -17,7 +18,7 @@ const AccountDetails = () => {
     accountType: "Staff", 
     locationPreference: "Nearby", 
     visitPreference: "Daily",  
-    profilePhoto: "/path/to/default/profile-photo.jpg",
+    profilePhoto: profileImage,
     stalls: [
       {
         id: 1,
@@ -35,67 +36,20 @@ const AccountDetails = () => {
   });
 
   const [editingField, setEditingField] = useState(null);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUser((prevUser) => ({
-      ...prevUser,
-      [name]: value,
-    }));
-  };
-
-  const handleStallInputChange = (index, e) => {
-    const { name, value } = e.target;
-    const updatedStalls = [...user.stalls];
-    updatedStalls[index][name] = value;
-    setUser((prevUser) => ({
-      ...prevUser,
-      stalls: updatedStalls,
-    }));
-  };
-
-  const handleProfilePhotoChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setUser((prevUser) => ({
-          ...prevUser,
-          profilePhoto: reader.result, 
-        }));
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  const navigate = useNavigate();
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
-  const navigate = useNavigate(); 
 
   const handleLogoutClick = () => {
     setShowLogoutPopup(true); 
   };
 
   const handleLogoutConfirm = () => {
-    setShowLogoutPopup(false); 
-    console.log("Navigating to login page...");
-
-    navigate("/Login"); 
+    setShowLogoutPopup(false);
+    navigate("/Login");
   };
 
   const handleLogoutCancel = () => {
     setShowLogoutPopup(false); 
-  };
-
-  const addStall = () => {
-    const newStall = {
-      id: user.stalls.length + 1,
-      stallName: "",
-      marketName: "",
-      location: "",
-    };
-    setUser((prevUser) => ({
-      ...prevUser,
-      stalls: [...prevUser.stalls, newStall],
-    }));
   };
 
   const toggleEditField = (field) => {
@@ -112,23 +66,15 @@ const AccountDetails = () => {
               type={type}
               name={fieldName}
               value={user[fieldName]}
-              onChange={handleInputChange}
+              onChange={(e) => setUser({...user, [fieldName]: e.target.value})}
               className="input"
             />
-            <FaSave
-              className="editIcon"
-              onClick={() => toggleEditField(fieldName)}
-              title="Save"
-            />
+            <FaSave className="editIcon" onClick={() => toggleEditField(fieldName)} title="Save" />
           </>
         ) : (
           <>
             <p>{fieldName === "password" ? "********" : user[fieldName]}</p>
-            <FaEdit
-              className="editIcon"
-              onClick={() => toggleEditField(fieldName)}
-              title="Edit"
-            />
+            <FaEdit className="editIcon" onClick={() => toggleEditField(fieldName)} title="Edit" />
           </>
         )}
       </div>
@@ -137,13 +83,12 @@ const AccountDetails = () => {
 
   return (
     <div className="container-account-details">
-       
       <div className="header-account-details">
         <div className="headerText">Account Details</div>
         <button className="logoutButton" onClick={handleLogoutClick}>
           <FaSignOutAlt /> Logout
         </button>
-      </div>  
+      </div>
       <Popup
         show={showLogoutPopup}
         onClose={handleLogoutCancel}
@@ -152,70 +97,77 @@ const AccountDetails = () => {
         buttonText="Yes, log me out"
         onConfirm={handleLogoutConfirm}
       />
-      <div className="profileSection">
-        <div className="profilePhotoWrapper">
-          <img
-            src={user.profilePhoto}
-            alt="Profile"
-            className="profilePhoto"
-          />
-          <label htmlFor="profilePhotoInput" className="editProfilePhoto">
-            <FaEdit />
-          </label>
-          <input
-            type="file"
-            id="profilePhotoInput"
-            className="fileInput"
-            onChange={handleProfilePhotoChange}
-          />
-        </div>
 
-        <div className="nameSection">
-          {renderField("First Name", "firstName")}
-          {renderField("Last Name", "lastName")}
+      <div className="section-box">
+        <div className="profileSection">
+          <div className="profilePhotoWrapper">
+            <img src={user.profilePhoto} alt="Profile" className="profilePhoto" />
+            <label htmlFor="profilePhotoInput" className="editProfilePhoto">
+              <FaEdit />
+            </label>
+            <input
+              type="file"
+              id="profilePhotoInput"
+              className="fileInput"
+              onChange={(e) => {
+                const file = e.target.files[0];
+                if (file) {
+                  const reader = new FileReader();
+                  reader.onloadend = () => {
+                    setUser((prevUser) => ({
+                      ...prevUser,
+                      profilePhoto: reader.result,
+                    }));
+                  };
+                  reader.readAsDataURL(file);
+                }
+              }}
+            />
+          </div>
+
+          <div className="nameSection">
+            {renderField("First Name", "firstName")}
+            {renderField("Last Name", "lastName")}
+          </div>
         </div>
       </div>
 
-      {renderField("Email", "email", "email")}
-      {renderField("Phone", "phone", "tel")}
-      {renderField("Address Line 1", "addressLine1")}
-      {renderField("Address Line 2", "addressLine2")}
-      {renderField("Postcode", "postcode")}
-      {renderField("Password", "password", "password")}
+      <div className="section-box">
+        {renderField("Email", "email", "email")}
+        {renderField("Phone", "phone", "tel")}
+        {renderField("Address Line 1", "addressLine1")}
+        {renderField("Address Line 2", "addressLine2")}
+        {renderField("Postcode", "postcode")}
+        {renderField("Password", "password", "password")}
+      </div>
 
-      <div className="detailGroup">
-        <label>Account Type:</label>
-        {editingField === "accountType" ? (
-          <>
-            <select
-              name="accountType"
-              value={user.accountType}
-              onChange={handleInputChange}
-              className="input"
-            >
-              <option value="Public">Public</option>
-              <option value="Staff">Staff</option>
-            </select>
-            <FaSave
-              className="editIcon"
-              onClick={() => toggleEditField("accountType")}
-              title="Save"
-            />
-          </>
-        ) : (
-          <>
-            <p>{user.accountType}</p>
-            <FaEdit
-              className="editIcon"
-              onClick={() => toggleEditField("accountType")}
-              title="Edit"
-            />
-          </>
-        )}
+      <div className="section-box">
+        <div className="detailGroup">
+          <label>Account Type:</label>
+          {editingField === "accountType" ? (
+            <>
+              <select
+                name="accountType"
+                value={user.accountType}
+                onChange={(e) => setUser({...user, accountType: e.target.value})}
+                className="input"
+              >
+                <option value="Public">Public</option>
+                <option value="Staff">Staff</option>
+              </select>
+              <FaSave className="editIcon" onClick={() => toggleEditField("accountType")} title="Save" />
+            </>
+          ) : (
+            <>
+              <p>{user.accountType}</p>
+              <FaEdit className="editIcon" onClick={() => toggleEditField("accountType")} title="Edit" />
+            </>
+          )}
+        </div>
       </div>
 
       {user.accountType === "Public" && (
-        <>
+        <div className="section-box">
           <div className="detailGroup">
             <label>Location Preference:</label>
             {editingField === "locationPreference" ? (
@@ -223,27 +175,19 @@ const AccountDetails = () => {
                 <select
                   name="locationPreference"
                   value={user.locationPreference}
-                  onChange={handleInputChange}
+                  onChange={(e) => setUser({...user, locationPreference: e.target.value})}
                   className="input"
                 >
                   <option value="Nearby">Nearby</option>
                   <option value="International">International</option>
                   <option value="Remote">Remote</option>
                 </select>
-                <FaSave
-                  className="editIcon"
-                  onClick={() => toggleEditField("locationPreference")}
-                  title="Save"
-                />
+                <FaSave className="editIcon" onClick={() => toggleEditField("locationPreference")} title="Save" />
               </>
             ) : (
               <>
                 <p>{user.locationPreference}</p>
-                <FaEdit
-                  className="editIcon"
-                  onClick={() => toggleEditField("locationPreference")}
-                  title="Edit"
-                />
+                <FaEdit className="editIcon" onClick={() => toggleEditField("locationPreference")} title="Edit" />
               </>
             )}
           </div>
@@ -255,35 +199,27 @@ const AccountDetails = () => {
                 <select
                   name="visitPreference"
                   value={user.visitPreference}
-                  onChange={handleInputChange}
+                  onChange={(e) => setUser({...user, visitPreference: e.target.value})}
                   className="input"
                 >
                   <option value="Daily">Daily</option>
                   <option value="Weekly">Weekly</option>
                   <option value="Monthly">Monthly</option>
                 </select>
-                <FaSave
-                  className="editIcon"
-                  onClick={() => toggleEditField("visitPreference")}
-                  title="Save"
-                />
+                <FaSave className="editIcon" onClick={() => toggleEditField("visitPreference")} title="Save" />
               </>
             ) : (
               <>
                 <p>{user.visitPreference}</p>
-                <FaEdit
-                  className="editIcon"
-                  onClick={() => toggleEditField("visitPreference")}
-                  title="Edit"
-                />
+                <FaEdit className="editIcon" onClick={() => toggleEditField("visitPreference")} title="Edit" />
               </>
             )}
           </div>
-        </>
+        </div>
       )}
 
       {user.accountType === "Staff" && (
-        <>
+        <div className="section-box">
           <h2>Stalls</h2>
           {user.stalls.map((stall, index) => (
             <div key={stall.id} className="stallGroup">
@@ -293,14 +229,17 @@ const AccountDetails = () => {
                   type="text"
                   name="stallName"
                   value={stall.stallName}
-                  onChange={(e) => handleStallInputChange(index, e)}
+                  onChange={(e) => {
+                    const updatedStalls = [...user.stalls];
+                    updatedStalls[index].stallName = e.target.value;
+                    setUser((prevUser) => ({
+                      ...prevUser,
+                      stalls: updatedStalls,
+                    }));
+                  }}
                   className="input"
                 />
-                <FaSave
-                  className="editIcon"
-                  onClick={() => {}}
-                  title="Save"
-                />
+                <FaSave className="editIcon" title="Save" />
               </div>
 
               <div className="detailGroup">
@@ -309,14 +248,17 @@ const AccountDetails = () => {
                   type="text"
                   name="marketName"
                   value={stall.marketName}
-                  onChange={(e) => handleStallInputChange(index, e)}
+                  onChange={(e) => {
+                    const updatedStalls = [...user.stalls];
+                    updatedStalls[index].marketName = e.target.value;
+                    setUser((prevUser) => ({
+                      ...prevUser,
+                      stalls: updatedStalls,
+                    }));
+                  }}
                   className="input"
                 />
-                <FaSave
-                  className="editIcon"
-                  onClick={() => {}}
-                  title="Save"
-                />
+                <FaSave className="editIcon" title="Save" />
               </div>
 
               <div className="detailGroup">
@@ -325,26 +267,30 @@ const AccountDetails = () => {
                   type="text"
                   name="location"
                   value={stall.location}
-                  onChange={(e) => handleStallInputChange(index, e)}
+                  onChange={(e) => {
+                    const updatedStalls = [...user.stalls];
+                    updatedStalls[index].location = e.target.value;
+                    setUser((prevUser) => ({
+                      ...prevUser,
+                      stalls: updatedStalls,
+                    }));
+                  }}
                   className="input"
                 />
-                <FaSave
-                  className="editIcon"
-                  onClick={() => {}}
-                  title="Save"
-                />
+                <FaSave className="editIcon" title="Save" />
               </div>
             </div>
           ))}
-
           <div className="addStallButton">
-            <FaPlus
-              className="addIcon"
-              onClick={addStall}
-              title="Add New Stall"
-            />
+            <FaPlus className="addIcon" onClick={() => {
+              const newStall = { id: user.stalls.length + 1, stallName: "", marketName: "", location: "" };
+              setUser((prevUser) => ({
+                ...prevUser,
+                stalls: [...prevUser.stalls, newStall],
+              }));
+            }} title="Add New Stall" />
           </div>
-        </>
+        </div>
       )}
     </div>
   );

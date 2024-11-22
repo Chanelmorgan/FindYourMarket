@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import "../styles/AppSettings.css"; 
+import Popup from '../components/Popup.js';
 
 const AppSettings = () => {
   const [notificationPreference, setNotificationPreference] = useState("all");
   const [locationAllowed, setLocationAllowed] = useState(true);
   const [dataAllowed, setDataAllowed] = useState(true);
+  const [showPopup, setShowPopup] = useState(false); // Popup state
+
 
   const handleNotificationChange = (e) => {
     setNotificationPreference(e.target.value);
@@ -16,6 +19,14 @@ const AppSettings = () => {
 
   const toggleDataPermission = () => {
     setDataAllowed(!dataAllowed);
+  };
+
+  const handleSave = () => {
+    setShowPopup(true); 
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false); 
   };
 
   return (
@@ -120,14 +131,18 @@ const AppSettings = () => {
         </ul>
       </section>
 
-      <button
-        onClick={() => {
-          // TODO: Add save functionality here
-        }}
-        className="settings-button"
-      >
+      <button onClick={handleSave} className="settings-button" >
         Save
       </button>
+
+      <Popup
+        show={showPopup}
+        onClose={handleClosePopup}
+        title="Save Successful!"
+        message="Your Settings are now successfully saved :)"
+        buttonText="Save"
+        onConfirm={handleClosePopup}
+      /> 
     </div>
   );
 };

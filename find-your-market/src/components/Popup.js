@@ -7,10 +7,10 @@ const Popup = ({ show, onClose, title = 'Popup Title', message = 'This is a samp
   return (
     <div className="popup-overlay">
       <div className="popup-content">
-        <button className="close-button" onClick={onClose}>&times;</button>
+      <button className="close-button-pop-up" onClick={onClose}>&times; </button>
         <h2>{title}</h2>
         <p>{message}</p>
-        <button onClick={onConfirm}>{buttonText}</button>   
+        <button className="popup-button" onClick={onConfirm}>{buttonText}</button>   
       </div>
     </div>
   );

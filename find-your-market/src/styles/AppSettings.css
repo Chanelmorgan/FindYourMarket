@@ -6,9 +6,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding-top: 60px;
-  background-color: #f9f9f9;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .settings-heading {
@@ -57,11 +55,11 @@
 }
 
 .settings-button:hover {
-  background-color: #0056b3;
+  background-color: #bcb2de;
 }
 
 .settings-button:active {
-  background-color: #004085;
+  background-color: #bcb2de;
 }
 
 .settings-button:focus {
