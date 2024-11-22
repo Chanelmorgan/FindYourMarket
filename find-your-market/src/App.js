@@ -63,12 +63,14 @@ function App() {
   return (
     <Router>
       <AppContent />
+      <div className="top-right-buttons">
       <button onClick={toggleHighContrast}>
         {isHighContrast ? 'Disable High Contrast Mode' : 'Enable High Contrast Mode'}
       </button>
       <button onClick={toggleDyslexiaFriendly}>
         {isDyslexiaFriendly ? 'Disable Dyslexia-Friendly Mode' : 'Enable Dyslexia-Friendly Mode'}
       </button>
+    </div>
     </Router>
   );
 }
