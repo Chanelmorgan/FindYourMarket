@@ -66,9 +66,10 @@ const Header = () => {
                   />
                 </button>
                 <ul className={`stallsDropdown ${stallsOpen.market1 ? "open" : ""}`}>
-                  <li>Stall 1</li>
-                  <li>Stall 2</li>
-                  <li>Stall 3</li>
+                <a href="/Stall" >Stall 1</a>
+                <a href="/Stall" >Stall 2</a>
+                <a href="/Stall" >Stall 3</a>
+  
                 </ul>
               </li>
               <li>
