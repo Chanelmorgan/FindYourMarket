@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Select from 'react-select';  
 import '../styles/CreateAccount.css'; 
 import stallsImage from '../assets/images/stalls.png';
-import { Link,useNavigate } from 'react-router-dom'; 
+import { Link, useNavigate } from 'react-router-dom'; 
 import Popup from '../components/Popup.js';
 
 function CreateAccountPage() { 
@@ -21,31 +21,54 @@ function CreateAccountPage() {
   const [staffType, setStaffType] = useState(null);   // For staff dropdown
   const [error, setError] = useState('');
   const [showPopup, setShowPopup] = useState(false); 
-
+  const [isErrorPopup, setIsErrorPopup] = useState(false); 
+  const [isIncorrectPasswordPopup, setIsIncorrectPasswordPopup] = useState(false); 
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     
+    // Basic validation: check if all required fields are filled
     if (!firstName || !lastName || !email || !phone || !addressLine1 || !postCode || !password || !confirmPassword || !accountType) {
       setError('Please fill in all required fields.');
       return;
     }
 
+    // Check if the passwords match
     if (password !== confirmPassword) {
       setError('Passwords do not match.');
+      setIsErrorPopup(true); // Show error popup
+      setShowPopup(true); // Show popup
       return;
     }
 
+       // Validate the password strength
+       if (password =="incorrect"){
+        setError('Password is incorrect. It must be at least 8 characters long and contain both letters and numbers.');
+        setIsIncorrectPasswordPopup(true); // Show incorrect password error popup
+        setIsErrorPopup(false); // Hide password mismatch popup
+        setShowPopup(true);
+        return;
+      }
+
     setError('');
-    setShowPopup(true);
+    setIsErrorPopup(false); // No error, reset
+    setShowPopup(true); // Show success popup
   };
 
-   const handleClosePopup = () => {
+  const handleClosePopup = () => {
     setShowPopup(false); 
-    navigate('/');  
+    
+    // Navigate to the homepage only if the account is successfully created
+    if (!isErrorPopup) {
+      navigate('/');  
+    }
+
+    // Reset error state for the next attempt
+    setError('');
+    setIsErrorPopup(false);
   };
 
-  // Options for searchable dropdowns
+  
   const publicRoleOptions = [
     { value: 'Customer', label: 'Customer' },
     { value: 'Subscriber', label: 'Subscriber' }
@@ -220,16 +243,36 @@ function CreateAccountPage() {
         </form> 
       </div> 
     
-
-<Popup
-        show={showPopup}
+      <Popup
+        show={showPopup && !isIncorrectPasswordPopup && !isErrorPopup}
         onClose={handleClosePopup}
         title="Account Created!"
         message="Your account has been successfully created."
         buttonText="Okay"
         onConfirm={handleClosePopup}
+        isError={false}
       /> 
-      
+
+      <Popup
+        show={showPopup && isErrorPopup}
+        onClose={handleClosePopup}
+        title="Error"
+        message="Passwords do not match. Please try again."
+        buttonText="Okay"
+        onConfirm={handleClosePopup}
+        isError={true}
+      />
+
+      <Popup
+        show={showPopup && isIncorrectPasswordPopup}
+        onClose={handleClosePopup}
+        title="Error"
+        message="Password is incorrect. It must be at least 8 characters long and contain both letters and numbers."
+        buttonText="Okay"
+        onConfirm={handleClosePopup}
+        isError={true}
+      />
+
       <img src={stallsImage} alt="Stalls" className="create-account-stalls" />
     </div>
   );

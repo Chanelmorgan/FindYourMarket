@@ -3,6 +3,7 @@ import '../styles/Login.css';
 import stallsImage from '../assets/images/stalls.png';
 import { Link, useNavigate } from 'react-router-dom';
 import Popup from '../components/Popup.js';
+import Accessible from "../components/Accessible";
 
 function Login() {
   const navigate = useNavigate(); 
@@ -47,6 +48,7 @@ function Login() {
 
   return (
     <div className="login-container">
+      <Accessible />
       <div className="login-box">
         <h2>Login</h2>
         {error && <p className="error-message">{error}</p>}
