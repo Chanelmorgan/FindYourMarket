@@ -16,7 +16,7 @@ function Stall() {
     
       return (
         <div className="container-stall">
-          <h1 className="title-stall">Example Market</h1>
+          <h1 className="title-stall">Example Stall</h1>
           <h2 className="sub-heading-stall">Location: Norwich City Centre</h2>
           <div className="scroll-container-stall">
             {items.map((item, index) => (

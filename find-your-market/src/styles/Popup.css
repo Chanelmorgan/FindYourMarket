@@ -25,6 +25,12 @@
   animation: slideIn 0.3s ease-out;
 }
 
+
+.popup-content.error {
+  background: var(--coral); 
+  border: 3px solid var(--coral); 
+}
+
 .popup-content h2 {
   font-size: 1.8rem;
   font-weight: 600;
@@ -38,7 +44,6 @@
   margin-bottom: 25px;
   line-height: 1.5;
 }
-
 
 .close-button-pop-up {
   position: absolute;
@@ -61,7 +66,6 @@
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-
 .close-button-pop-up:hover {
   transform: scale(1.2); 
   background-color: rgba(255, 255, 255, 0.2); 
@@ -81,6 +85,9 @@
   width: 100%; 
 }
 
+.popup-button.error {
+  background-color: #e74c3c; 
+}
 
 .popup-button:hover {
   background-color: #fdd963; 
@@ -91,7 +98,6 @@
   background-color: #fdd963;
   transform: translateY(1px); 
 }
-
 
 @keyframes slideIn {
   0% {
