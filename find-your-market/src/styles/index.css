@@ -58,3 +58,26 @@ body.high-contrast {
   font-family: 'OpenDyslexic', Arial, sans-serif;
   background-color: #ffffe0; /* Soft yellow for easier reading */
 }
+
+.top-right-buttons {
+  position: absolute;
+  top: 10px; /* Adjust the spacing from the top */
+  right: 10px; /* Adjust the spacing from the right */
+  display: flex; /* Align buttons in a row */
+  gap: 10px; /* Add spacing between buttons */
+  z-index: 9999; /* Ensure the buttons appear above other elements */
+}
+
+button {
+  padding: 8px 12px; /* Adjust button size */
+  font-size: 14px; /* Adjust font size */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #007bff; /* Default button color */
+  color: #fff; /* Button text color */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker color on hover */
+}
