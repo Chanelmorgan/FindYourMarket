@@ -10,6 +10,7 @@ import Header from './components/Header';
 import Market from './components/Market'; 
 import StallPage from './pages/StallPage';
 import './styles/index.css';
+import StallStaffPage from './pages/StallStaffPage';
 
 function AppContent() {
   const location = useLocation();
@@ -27,6 +28,7 @@ function AppContent() {
         <Route path="/Markets" element={<Markets />} />
         <Route path="/Market" element={<Market />} />
         <Route path="/Stall" element={<StallPage />} />
+        <Route path="/StallStaffPage" element={<StallStaffPage />} />
       </Routes>
     </div>
   );

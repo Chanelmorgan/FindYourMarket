@@ -23,7 +23,7 @@ function CreateAccountPage() {
   const [showPopup, setShowPopup] = useState(false); 
   const [isErrorPopup, setIsErrorPopup] = useState(false); 
   const [isIncorrectPasswordPopup, setIsIncorrectPasswordPopup] = useState(false); 
-  // Handle form submission
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -33,37 +33,37 @@ function CreateAccountPage() {
       return;
     }
 
-    // Check if the passwords match
+
     if (password !== confirmPassword) {
       setError('Passwords do not match.');
-      setIsErrorPopup(true); // Show error popup
-      setShowPopup(true); // Show popup
+      setIsErrorPopup(true); 
+      setShowPopup(true); 
       return;
     }
 
-       // Validate the password strength
+     
        if (password =="incorrect"){
         setError('Password is incorrect. It must be at least 8 characters long and contain both letters and numbers.');
-        setIsIncorrectPasswordPopup(true); // Show incorrect password error popup
-        setIsErrorPopup(false); // Hide password mismatch popup
+        setIsIncorrectPasswordPopup(true); 
+        setIsErrorPopup(false); 
         setShowPopup(true);
         return;
       }
 
     setError('');
-    setIsErrorPopup(false); // No error, reset
-    setShowPopup(true); // Show success popup
+    setIsErrorPopup(false);
+    setShowPopup(true); 
   };
 
   const handleClosePopup = () => {
     setShowPopup(false); 
     
-    // Navigate to the homepage only if the account is successfully created
+    
     if (!isErrorPopup) {
       navigate('/');  
     }
 
-    // Reset error state for the next attempt
+  
     setError('');
     setIsErrorPopup(false);
   };
