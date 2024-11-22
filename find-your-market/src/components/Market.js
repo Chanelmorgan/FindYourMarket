@@ -1,12 +1,13 @@
-import React from 'react';
-import '../styles/Market.css';
+import React from "react";
+import "../styles/Market.css"; 
+import { Link } from "react-router-dom";
 
 const Market = () => {
   return (
-    <div>
-      <h2>
-        Market 1 - in here have multiple stalls 
-    </h2>
+    <div className="market-container">
+        <h1 className="market-title">Stalls for Market 1 </h1>
+    
+
     </div>
   );
 };

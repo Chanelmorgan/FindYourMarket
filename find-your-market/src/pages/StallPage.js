@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/StallPage.css'; 
+import '../styles/Stall.css'; 
 function Stall() {
 
     return <div>

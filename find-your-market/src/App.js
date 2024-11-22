@@ -7,6 +7,8 @@ import AccountDetails from './pages/AccountDetailsPage';
 import AppSettings from './pages/AppSettingsPage';
 import Markets from './pages/MarketsPage'; 
 import Header from './components/Header';
+import Market from './components/Market'; 
+import StallPage from './pages/StallPage';
 
 function AppContent() {
   const location = useLocation();
@@ -22,6 +24,8 @@ function AppContent() {
         <Route path="/AccountDetails" element={<AccountDetails />} />
         <Route path="/AppSettings" element={<AppSettings />} />
         <Route path="/Markets" element={<Markets />} />
+        <Route path="/Market" element={<Market />} />
+        <Route path="/Stall" element={<StallPage />} />
       </Routes>
     </div>
   );
