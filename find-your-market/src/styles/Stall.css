@@ -1,24 +1,24 @@
-
-.container {
+@import 'variables.css';
+.container-stall {
     padding: 20px;
     font-family: Arial, sans-serif;
     text-align: center;
   }
   
-  .title {
+  .title-stall {
     font-size: 36px;
     margin-bottom: 10px;
     margin-top: 70px;
   }
   
-  .sub-heading {
+  .sub-heading-stall {
     font-size: 24px;
     margin-bottom: 20px;
     color: gray;
     text-align: left;
   }
   
-  .scroll-container {
+  .scroll-container-stall {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,12 +31,12 @@
     margin: 0 auto; 
   }
   
-  .item {
+  .item-stall {
     font-size: 18px;
     margin: 10px 0;
     padding: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color:var(--lightgreen);
+    border: 4px solid var(--darkgreen);
     border-radius: 4px;
     width: 100%; 
     text-align: left;
@@ -45,10 +45,10 @@
     align-items: center;
   }
   
-  .item-name {
+  .item-name-stall {
     font-weight: bold;
   }
   
-  .item-amount {
+  .item-amount-stall {
     color: gray;
   }

@@ -15,14 +15,14 @@ function Stall() {
       ]; 
     
       return (
-        <div className="container">
-          <h1 className="title">Example Market</h1>
-          <h2 className="sub-heading">Location: Norwich City Centre</h2>
-          <div className="scroll-container">
+        <div className="container-stall">
+          <h1 className="title-stall">Example Market</h1>
+          <h2 className="sub-heading-stall">Location: Norwich City Centre</h2>
+          <div className="scroll-container-stall">
             {items.map((item, index) => (
-              <div key={index} className="item">
-                <span className="item-name">{item.name}</span>
-                <span className="item-amount">{item.amount}</span>
+              <div key={index} className="item-stall">
+                <span className="item-name-stall">{item.name}</span>
+                <span className="item-amount-stall">{item.amount}</span>
               </div>
             ))}
           </div>
