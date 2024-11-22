@@ -4,6 +4,7 @@ import "../styles/AppSettings.css";
 const AppSettings = () => {
   const [notificationPreference, setNotificationPreference] = useState("all");
   const [locationAllowed, setLocationAllowed] = useState(true);
+  const [dataAllowed, setDataAllowed] = useState(true);
 
   const handleNotificationChange = (e) => {
     setNotificationPreference(e.target.value);
@@ -11,6 +12,10 @@ const AppSettings = () => {
 
   const toggleLocationPermission = () => {
     setLocationAllowed(!locationAllowed);
+  };
+
+  const toggleDataPermission = () => {
+    setDataAllowed(!dataAllowed);
   };
 
   return (
@@ -66,22 +71,23 @@ const AppSettings = () => {
       <section className="settings-section">
         <h2 className="settings-section-heading">Permissions</h2>
         <div>
-          <p>
+          <p className="permission-text">
             <strong>Location Access:</strong> {locationAllowed ? "Allowed" : "Not Allowed"}
           </p>
           <button onClick={toggleLocationPermission} className="settings-button">
             {locationAllowed ? "Remove Access" : "Allow Access"}
           </button>
-          <p>
-            <strong>Data Collection:</strong> {locationAllowed ? "Allowed" : "Not Allowed"}
+        </div>
+        <div>
+          <p className="permission-data-text">
+            <strong>Data Access:</strong> {dataAllowed ? "Allowed" : "Not Allowed"}
           </p>
-          <button onClick={toggleLocationPermission} className="settings-button">
-            {locationAllowed ? "Remove Access" : "Allow Access"}
+          <button onClick={toggleDataPermission} className="settings-button">
+            {dataAllowed ? "Remove Access" : "Allow Access"}
           </button>
         </div>
       </section>
 
-     
       <section className="settings-section">
         <h2 className="settings-section-heading">General</h2>
         <ul className="link-list">
@@ -112,16 +118,16 @@ const AppSettings = () => {
             </a>
           </li>
         </ul>
-      </section> 
+      </section>
 
       <button
-            onClick={() => {
-                // TODO: Add save functionality here
-            }}
-            className="settings-button"
-            >
-            Save
-     </button>
+        onClick={() => {
+          // TODO: Add save functionality here
+        }}
+        className="settings-button"
+      >
+        Save
+      </button>
     </div>
   );
 };
