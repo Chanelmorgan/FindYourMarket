@@ -10,24 +10,39 @@ function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [showPopup, setShowPopup] = useState(false); 
+  const [isErrorPopup, setIsErrorPopup] = useState(false); 
 
-  // Handle form submission
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Basic validation
+    
     if (!email || !password) {
       setError('Please fill in all fields.');
       return;
     }
 
+    if (password === 'incorrect') {
+      setError('Incorrect password, please try again.');
+      setIsErrorPopup(true); 
+      setShowPopup(true); 
+      return;
+    }
+
     setError('');
-    setShowPopup(true);
+    setShowPopup(true); 
   };
 
   const handleClosePopup = () => {
     setShowPopup(false); 
-    navigate('/');  
+  
+    if (!isErrorPopup) {
+      navigate('/'); 
+    }
+
+
+    setError('');
+    setIsErrorPopup(false);
   };
 
   return (
@@ -64,21 +79,18 @@ function Login() {
         </form> 
       </div> 
     
-
-<Popup
+      <Popup
         show={showPopup}
         onClose={handleClosePopup}
-        title="Login Successful!"
-        message="Login was successful"
+        title={isErrorPopup ? "Error" : "Login Successful!"}
+        message={isErrorPopup ? "Incorrect password. Please try again." : "Login was successful"}
         buttonText="Okay"
         onConfirm={handleClosePopup}
+        isError={isErrorPopup} 
       /> 
 
-        <img src={stallsImage} alt="Stalls" className="stalls" />
-      
+      <img src={stallsImage} alt="Stalls" className="stalls" />
     </div>
-
-    
   );
 }
 
