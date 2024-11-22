@@ -4,18 +4,14 @@
 }
 
 body {
+  font-family: "Dongle", sans-serif; /* Default font */
+  font-size: 16px; /* Default font size */
   color: var(--font-color);
   background-color: var(--background-color);
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: transparent;
 }
-
-
-/* h1, h2, h3 {
-  color: #333;
-} */
 
 a {
   text-decoration: none;
@@ -54,30 +50,67 @@ body.high-contrast {
 }
 
 /* Dyslexia-Friendly Mode */
-.dyslexia-friendly {
-  font-family: 'OpenDyslexic', Arial, sans-serif;
+body.dyslexia-friendly, html.dyslexia-friendly {
+  font-family: 'OpenDyslexic', Arial, sans-serif !important;
+  font-size: 14px; /* Smaller font size for dyslexia-friendly mode */
   background-color: #ffffe0; /* Soft yellow for easier reading */
 }
 
+/* Top Right Buttons */
 .top-right-buttons {
   position: absolute;
-  top: 10px; /* Adjust the spacing from the top */
-  right: 10px; /* Adjust the spacing from the right */
+  top: 10px; /* Adjust spacing from the top */
+  right: 10px; /* Adjust spacing from the right */
   display: flex; /* Align buttons in a row */
-  gap: 10px; /* Add spacing between buttons */
+  gap: 10px; /* Spacing between buttons */
   z-index: 9999; /* Ensure the buttons appear above other elements */
 }
 
-button {
-  padding: 8px 12px; /* Adjust button size */
-  font-size: 14px; /* Adjust font size */
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  background-color: #007bff; /* Default button color */
-  color: #fff; /* Button text color */
+/* Icon Buttons */
+.icon-button {
+  background-color: #f1f1f1; /* Light gray background */
+  border: none; /* No border */
+  cursor: pointer; /* Pointer cursor for clickable elements */
+  font-size: 20px; /* Icon size */
+  color: #666; /* Default icon color */
+  padding: 10px; /* Padding around the icon */
+  border-radius: 50%; /* Circular button */
+  height: 40px; /* Ensure height and width are equal */
+  width: 40px; /* Ensure height and width are equal */
+  display: flex; /* Center the icon inside the button */
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease; /* Smooth transition for hover and active states */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
-button:hover {
-  background-color: #0056b3; /* Darker color on hover */
+.icon-button:hover {
+  background-color: #007bff; /* Blue background on hover */
+  color: #fff; /* White icon on hover */
+}
+
+.icon-button.active {
+  background-color: #ff5722; /* Orange background for active state */
+  color: #fff; /* White icon for active state */
+}
+
+/* High Contrast Mode Icon Styling */
+body.high-contrast .icon-button {
+  background-color: #333; /* Dark background for high contrast */
+  color: #fff; /* White icons */
+}
+
+body.high-contrast .icon-button.active {
+  background-color: #ffcc00; /* Yellow active state in high contrast mode */
+}
+
+/* Dyslexia-Friendly Mode Icon Styling */
+body.dyslexia-friendly .icon-button {
+  background-color: #e8e8e8; /* Light gray background for readability */
+  color: #333; /* Darker icon color */
+}
+
+body.dyslexia-friendly .icon-button.active {
+  background-color: #ff5722; /* Keep active background consistent */
+  color: #fff; /* White icon for active state */
 }
