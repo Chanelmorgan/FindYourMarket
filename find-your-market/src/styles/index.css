@@ -19,3 +19,34 @@ a {
   padding: 0;
   box-sizing: border-box;
 }
+
+/* High Contrast Mode */
+.high-contrast {
+  --background-color: #000;
+  --text-color: #fff;
+}
+
+body.high-contrast {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('../assets/fonts/OpenDyslexic-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('../assets/fonts/OpenDyslexic-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Dyslexia-Friendly Mode */
+.dyslexia-friendly {
+  font-family: 'OpenDyslexic', Arial, sans-serif;
+  background-color: #ffffe0; /* Soft yellow for easier reading */
+}
