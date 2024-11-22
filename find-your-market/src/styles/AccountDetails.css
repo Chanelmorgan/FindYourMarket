@@ -48,15 +48,17 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 16px;
+  font-size: 24px;
 }
 
 .detailGroup label {
   font-weight: bold;
   flex: 1;
+  margin-right: 5px;
 }
 
 .detailGroup p {
-  margin: 4px 0;
+  margin: px 0;
   flex: 2;
 }
 
@@ -65,7 +67,7 @@
 select {
   width: 100%;
   padding: 8px;
-  font-size: 16px;
+  font-size: 20px;
   margin-top: 4px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -110,8 +112,7 @@ select {
   position: absolute;
   bottom: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
+  color: var(--purple);
   padding: 5px;
   border-radius: 50%;
   cursor: pointer;
@@ -123,6 +124,7 @@ select {
 
 .nameSection {
   margin-left: 20px;
+  font-size: 24px;
 }
 
 .section-box{
@@ -132,4 +134,22 @@ select {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
   padding: 20px;
+}
+
+.stalls-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.stalls-header .section-box-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.stalls-header .addIcon {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--darkgreen); 
 }

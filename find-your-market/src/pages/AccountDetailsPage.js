@@ -218,82 +218,85 @@ const AccountDetails = () => {
         </div>
       )}
 
-      {user.accountType === "Staff" && (
-        <div className="section-box">
-          <h2>Stalls</h2>
-          {user.stalls.map((stall, index) => (
-            <div key={stall.id} className="stallGroup">
-              <div className="detailGroup">
-                <label>Stall Name:</label>
-                <input
-                  type="text"
-                  name="stallName"
-                  value={stall.stallName}
-                  onChange={(e) => {
-                    const updatedStalls = [...user.stalls];
-                    updatedStalls[index].stallName = e.target.value;
-                    setUser((prevUser) => ({
-                      ...prevUser,
-                      stalls: updatedStalls,
-                    }));
-                  }}
-                  className="input"
-                />
-                <FaSave className="editIcon" title="Save" />
-              </div>
-
-              <div className="detailGroup">
-                <label>Market Name:</label>
-                <input
-                  type="text"
-                  name="marketName"
-                  value={stall.marketName}
-                  onChange={(e) => {
-                    const updatedStalls = [...user.stalls];
-                    updatedStalls[index].marketName = e.target.value;
-                    setUser((prevUser) => ({
-                      ...prevUser,
-                      stalls: updatedStalls,
-                    }));
-                  }}
-                  className="input"
-                />
-                <FaSave className="editIcon" title="Save" />
-              </div>
-
-              <div className="detailGroup">
-                <label>Location:</label>
-                <input
-                  type="text"
-                  name="location"
-                  value={stall.location}
-                  onChange={(e) => {
-                    const updatedStalls = [...user.stalls];
-                    updatedStalls[index].location = e.target.value;
-                    setUser((prevUser) => ({
-                      ...prevUser,
-                      stalls: updatedStalls,
-                    }));
-                  }}
-                  className="input"
-                />
-                <FaSave className="editIcon" title="Save" />
-              </div>
-            </div>
-          ))}
-          <div className="addStallButton">
-            <FaPlus className="addIcon" onClick={() => {
-              const newStall = { id: user.stalls.length + 1, stallName: "", marketName: "", location: "" };
+{user.accountType === "Staff" && (
+  <div className="section-box">
+    <div className="stalls-header">
+      <h2 className="section-box-title">Stalls</h2>
+      <FaPlus
+        className="addIcon"
+        onClick={() => {
+          const newStall = { id: user.stalls.length + 1, stallName: "", marketName: "", location: "" };
+          setUser((prevUser) => ({
+            ...prevUser,
+            stalls: [...prevUser.stalls, newStall],
+          }));
+        }}
+        title="Add New Stall"
+      />
+    </div>
+    {user.stalls.map((stall, index) => (
+      <div key={stall.id} className="stallGroup">
+        <div className="detailGroup">
+          <label>Stall Name:</label>
+          <input
+            type="text"
+            name="stallName"
+            value={stall.stallName}
+            onChange={(e) => {
+              const updatedStalls = [...user.stalls];
+              updatedStalls[index].stallName = e.target.value;
               setUser((prevUser) => ({
                 ...prevUser,
-                stalls: [...prevUser.stalls, newStall],
+                stalls: updatedStalls,
               }));
-            }} title="Add New Stall" />
-          </div>
+            }}
+            className="input"
+          />
+          <FaSave className="editIcon" title="Save" />
         </div>
-      )}
-    </div>
-  );
-};
+
+        <div className="detailGroup">
+          <label>Market Name:</label>
+          <input
+            type="text"
+            name="marketName"
+            value={stall.marketName}
+            onChange={(e) => {
+              const updatedStalls = [...user.stalls];
+              updatedStalls[index].marketName = e.target.value;
+              setUser((prevUser) => ({
+                ...prevUser,
+                stalls: updatedStalls,
+              }));
+            }}
+            className="input"
+          />
+          <FaSave className="editIcon" title="Save" />
+        </div>
+
+        <div className="detailGroup">
+          <label>Location:</label>
+          <input
+            type="text"
+            name="location"
+            value={stall.location}
+            onChange={(e) => {
+              const updatedStalls = [...user.stalls];
+              updatedStalls[index].location = e.target.value;
+              setUser((prevUser) => ({
+                ...prevUser,
+                stalls: updatedStalls,
+              }));
+            }}
+            className="input"
+          />
+          <FaSave className="editIcon" title="Save" />
+        </div>
+      </div>
+    ))}
+  </div>
+)}
+</div>
+)};
 
 export default AccountDetails;
