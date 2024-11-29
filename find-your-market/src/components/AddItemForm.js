@@ -1,5 +1,6 @@
-// AddItemForm.js
+
 import React, { useState } from 'react';
+import '../styles/StaffStallForm.css';
 
 const AddItemForm = ({ stallId, onSubmit, onClose }) => {
   const [itemName, setItemName] = useState('');

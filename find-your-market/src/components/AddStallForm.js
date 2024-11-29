@@ -1,6 +1,5 @@
-// AddStallForm.js
 import React, { useState } from 'react';
-
+import '../styles/StaffStallForm.css';
 const AddStallForm = ({ onSubmit, onClose }) => {
   const [stallName, setStallName] = useState('');
   const [stallLocation, setStallLocation] = useState('');

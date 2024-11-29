@@ -1,4 +1,3 @@
-/* Add in StallStaff.css */
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -54,3 +53,16 @@
     color: white;
     margin-left: 10px;
   }
+  /* Add in StallStaff.css */
+.items-list {
+  max-height: 200px;  /* Adjust this value as needed */
+  overflow-y: auto;
+}
+
+.item-row {
+  margin-bottom: 10px;
+}
+
+.add-item-btn {
+  margin-top: 10px;
+}
