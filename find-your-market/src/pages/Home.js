@@ -3,12 +3,14 @@ import '../styles/index.css';
 import '../styles/Home.css';  
 import chartImage1 from '../assets/images/todayChart.png';
 import chartImage2 from '../assets/images/monthChart.png';
+import crowdLevelImage from '../assets/images/high.png';  
+import heatImage from '../assets/images/heat.png'; 
 
 // Example images for slideshow
 const images = [
     chartImage1,
     chartImage2,
-    'https://via.placeholder.com/600x400?text=Market+3'
+    heatImage
 ];
 
 const stallsData = [
@@ -38,9 +40,14 @@ function Home() {
             <h2 className="home-title">Hello, Tara!</h2>
             <h3 className="pref-market">Norwich Market</h3>
             
-            {/* Live Crowd Level Box */}
+            {/* Live Crowd Level Box with Image */}
             <div className="curved-box">
-                    Live Crowd Level
+                <span>Live Crowd Level</span>
+                <img 
+                    src={crowdLevelImage} 
+                    alt="Crowd Level" 
+                    className="crowd-level-image" 
+                />
             </div>
 
             {/* Slideshow */}
@@ -55,7 +62,6 @@ function Home() {
                     &gt; {/* Right arrow */}
                 </div>
             </div>
-
 
             {/* List of Stalls and Opening Times */}
             <div className="stall-list">
