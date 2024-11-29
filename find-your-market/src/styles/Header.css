@@ -20,6 +20,25 @@
   cursor: pointer;
 }
 
+
+.logo-container {
+  flex-grow: 1;
+  text-align: center;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  position: relative;
+}
+
+.header-logo {
+  height: 100px; 
+  width: auto; 
+  margin-bottom: -10px; 
+  transition: all 0.3s ease; 
+  padding-right: 10px;
+}
+
+
 .sideMenu {
   position: fixed;
   top: 0;

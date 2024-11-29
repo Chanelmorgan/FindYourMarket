@@ -18,6 +18,7 @@ function Stall() {
         <div className="container-stall">
           <h1 className="title-stall">Example Stall</h1>
           <h2 className="sub-heading-stall">Location: Norwich City Centre</h2>
+          <p className="sub-heading-stall">Description: A local Market</p>
           <div className="scroll-container-stall">
             {items.map((item, index) => (
               <div key={index} className="item-stall">

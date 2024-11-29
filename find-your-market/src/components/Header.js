@@ -4,6 +4,7 @@ import "../styles/Header.css";
 import Popup from "../components/Popup";
 import { useNavigate } from "react-router-dom";
 import Accessible from "../components/Accessible";
+import logoImage from '../assets/images/logo2.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,6 +46,11 @@ const Header = () => {
       <div className="hamburger" onClick={toggleMenu}>
         <FaBars />
       </div>
+
+      <div className="logo-container">
+    <img src={logoImage} alt="Logo" className="header-logo" />
+    </div>
+
       {/* Conditional rendering of Accessible */}
       {!isMenuOpen && <Accessible />}
       <div className={`sideMenu ${isMenuOpen ? "open" : ""}`}>
