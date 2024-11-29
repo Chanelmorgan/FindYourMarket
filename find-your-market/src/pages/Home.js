@@ -4,9 +4,8 @@ import '../styles/Home.css';
 import chartImage1 from '../assets/images/todayChart.png';
 import chartImage2 from '../assets/images/monthChart.png';
 import crowdLevelImage from '../assets/images/high.png';  
-import heatImage from '../assets/images/heat.png'; 
+import heatImage from '../assets/images/newHeat.png'; 
 
-// Example images for slideshow
 const images = [
     chartImage1,
     chartImage2,
@@ -23,12 +22,11 @@ const stallsData = [
 function Home() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    // Handle the "Next" button click
     const handleNext = () => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
     };
 
-    // Handle the "Previous" button click
+   
     const handlePrevious = () => {
         setCurrentImageIndex(
             (prevIndex) => (prevIndex - 1 + images.length) % images.length
@@ -40,15 +38,17 @@ function Home() {
             <h2 className="home-title">Hello, Tara!</h2>
             <h3 className="pref-market">Norwich Market</h3>
             
-            {/* Live Crowd Level Box with Image */}
+     
             <div className="curved-box">
-                <span>Live Crowd Level</span>
-                <img 
-                    src={crowdLevelImage} 
-                    alt="Crowd Level" 
-                    className="crowd-level-image" 
-                />
-            </div>
+  <div className="content-container">
+    <span className="crowd-level-title">Live Crowd Level</span>
+    <img 
+      src={crowdLevelImage} 
+      alt="Crowd Level" 
+      className="image-crowd-level" 
+    />
+  </div>
+</div>
 
             {/* Slideshow */}
             <div className="slideshow-container">
@@ -63,7 +63,6 @@ function Home() {
                 </div>
             </div>
 
-            {/* List of Stalls and Opening Times */}
             <div className="stall-list">
                 {stallsData.map((stall, index) => (
                     <div key={index} className="stall-item">

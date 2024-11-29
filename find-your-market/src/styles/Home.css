@@ -67,6 +67,28 @@
     color: #333;
 }
 
+.content-container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+  }
+  
+
+  .crowd-level-title {
+    font-size: 2rem; /* Adjust title size */
+    font-weight: bold; /* Makes the title stand out */
+    margin-bottom: 20px; 
+    color: #333;
+  }
+  
+  .image-crowd-level {
+    width: 30px; /* Adjust image width as needed */
+    height: auto;
+    object-fit: contain; /* Ensure the image maintains its aspect ratio */
+  }
+
 .stall-list {
     margin-top: 40px;
     text-align: left;
@@ -121,3 +143,5 @@
 .arrow-right {
     right: 10px;
 }
+
+ 
