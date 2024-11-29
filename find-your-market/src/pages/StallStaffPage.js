@@ -280,26 +280,7 @@ const StallStaffPage = () => {
                             )
                           }
                         />
-                        <input
-                          type="number"
-                          value={item.price}
-                          onChange={(e) =>
-                            setStalls(
-                              stalls.map((s) =>
-                                s.id === stall.id
-                                  ? {
-                                      ...s,
-                                      items: s.items.map((i) =>
-                                        i.id === item.id
-                                          ? { ...i, price: e.target.value }
-                                          : i
-                                      ),
-                                    }
-                                  : s
-                              )
-                            )
-                          }
-                        />
+                        
                         <FaSave
                           onClick={() =>
                             handleSaveItem(

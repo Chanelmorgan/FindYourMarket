@@ -37,15 +37,7 @@ const AddItemForm = ({ stallId, onSubmit, onClose }) => {
           required
         />
       </div>
-      <div className="input-group">
-        <label>Price:</label>
-        <input
-          type="number"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          required
-        />
-      </div>
+
       <button type="submit" className="submit-btn">Add Item</button>
       <button type="button" className="close-btn" onClick={onClose}>Close</button>
     </form>
