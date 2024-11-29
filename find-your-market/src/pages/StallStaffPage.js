@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Select from 'react-select';
 import { FaPlus, FaEdit, FaSave } from 'react-icons/fa';
 import '../styles/StallStaff.css';
-import Popup from '../components/Popup'; 
+import Popup from '../components/Popup';
 
 const StallStaffPage = () => {
   const [stalls, setStalls] = useState([
@@ -16,7 +16,7 @@ const StallStaffPage = () => {
         { id: 2, name: 'Carrots', quantity: 30 },
         { id: 3, name: 'Bananas', quantity: 20 },
       ],
-      isEditing: false,  // Track if the stall is in editing mode
+      isEditing: false,
     },
   ]);
 
@@ -54,7 +54,7 @@ const StallStaffPage = () => {
           location: stallLocation,
           description: stallDescription,
           items: [],
-          isEditing: false,  // New stall starts in non-edit mode
+          isEditing: false,
         },
       ]);
       setNewStallId(newStallId + 1);
@@ -78,7 +78,7 @@ const StallStaffPage = () => {
         name: newName,
         location: newLocation,
         description: newDescription,
-        isEditing: false, // End editing mode
+        isEditing: false,
       } : stall
     ));
   };
@@ -121,7 +121,7 @@ const StallStaffPage = () => {
     ));
   };
 
-  const handleAddItem = (stallId, itemName) => {
+  const handleAddItem = (stallId) => {
     setStalls(stalls.map(stall =>
       stall.id === stallId ? {
         ...stall,
@@ -129,9 +129,9 @@ const StallStaffPage = () => {
           ...stall.items,
           {
             id: stall.items.length + 1,
-            name: itemName,
+            name: 'New Item',
             quantity: 0,
-            isEditing: false, // New item starts in non-edit mode
+            isEditing: false,
           }
         ]
       } : stall
@@ -187,107 +187,131 @@ const StallStaffPage = () => {
       </Popup>
 
       <div className="stalls-container">
-        {stalls.map((stall) => (
-          <div key={stall.id} className="stall-card">
-            <div className="stall-header">
-              <h2>{stall.name}</h2>
-              <FaEdit
-                className="edit-icon"
-                onClick={() => handleEditStall(stall.id)}
+  {stalls.map((stall) => (
+    <div key={stall.id} className="stall-card">
+      <div className="stall-header">
+        <h2>{stall.name}</h2>
+        <FaEdit
+          className="edit-icon"
+          onClick={() => handleEditStall(stall.id)}
+        />
+      </div>
+      <div className="stall-info">
+        {stall.isEditing ? (
+          <>
+            <div className="input-group">
+              <label>Market Location:</label>
+              <Select
+                options={marketLocations}
+                value={marketLocations.find((loc) => loc.value === stall.location)}
+                onChange={(location) =>
+                  setStalls(
+                    stalls.map((s) =>
+                      s.id === stall.id ? { ...s, location: location.value } : s
+                    )
+                  )
+                }
+                placeholder="Select Location"
+                isSearchable={true}
               />
             </div>
-            <div className="stall-info">
-              {stall.isEditing ? (
-                <>
-                  <div className="input-group">
-                    <label>Market Location:</label>
-                    <Select
-                      options={marketLocations}
-                      value={marketLocations.find((loc) => loc.value === stall.location)}
-                      onChange={(location) => setStalls(stalls.map(stall => stall.id === stall.id ? {...stall, location: location.value} : stall))}
-                      placeholder="Select Location"
-                      isSearchable={true}
-                    />
-                  </div>
-                  <div className="input-group">
-                    <label>Description:</label>
-                    <textarea
-                      value={stall.description}
-                      onChange={(e) => setStalls(stalls.map(stall => stall.id === stall.id ? {...stall, description: e.target.value} : stall))}
-                      placeholder="Enter stall description"
-                    />
-                  </div>
-                  <button
-                    onClick={() =>
-                      handleSaveStall(stall.id, stall.name, stall.location, stall.description)
-                    }
-                  >
-                    <FaSave /> Save
-                  </button>
-                </>
-              ) : (
-                <>
-                  <p><strong>Location:</strong> {stall.location}</p>
-                  <p><strong>Description:</strong> {stall.description}</p>
-                </>
-              )}
-            </div>
-            <h3 className="item-title">Items</h3>
-            <div className="items-list">
-              {stall.items.map((item) => (
-                <div key={item.id} className="item-row">
-                  <div className="item-header">
-                    <span className="item-name">{item.name}</span>
-                    <FaEdit
-                      className="edit-icon"
-                      onClick={() => handleEditItem(stall.id, item.id)}
-                    />
-                  </div>                  {item.isEditing ? (
-                    <div className="item-edit">
-                      <input
-                        type="text"
-                        value={item.name}
-                        onChange={(e) => handleChangeItem(stall.id, item.id, 'name', e.target.value)}
-                      />
-                      <input
-                        type="number"
-                        value={item.quantity}
-                        onChange={(e) => handleChangeItem(stall.id, item.id, 'quantity', e.target.value)}
-                      />
-                      <button
-                        onClick={() =>
-                          handleSaveItem(stall.id, item.id, item.name, item.quantity)
-                        }
-                      >
-                        <FaSave />
-                        Save
-                      </button>
-                    </div>
-                  ) : (
-                    <div>
-                      <span className="item-quantity">Quantity: {item.quantity}</span>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-            <div className="add-item">
-             
+            <div className="input-group">
+              <label>Description:</label>
+              <textarea
+                value={stall.description}
+                onChange={(e) =>
+                  setStalls(
+                    stalls.map((s) =>
+                      s.id === stall.id ? { ...s, description: e.target.value } : s
+                    )
+                  )
+                }
+                placeholder="Enter stall description"
+              />
             </div>
             <button
-              onClick={() => {
-                const input = document.querySelector(`#add-item-input-${stall.id}`);
-                if (input) input.focus();
-              }}
-              className="add-item-btn"
+              onClick={() =>
+                handleSaveStall(stall.id, stall.name, stall.location, stall.description)
+              }
             >
-              <FaPlus /> Add Item
+              <FaSave /> Save
             </button>
+          </>
+        ) : (
+          <>
+            <p>
+              <strong>Location:</strong> {stall.location}
+            </p>
+            <p>
+              <strong>Description:</strong> {stall.description}
+            </p>
+          </>
+        )}
+      </div>
+
+      <h3 className="item-title">Items</h3>
+      <div
+        className="items-list"
+        style={{
+          maxHeight: stall.items.length >= 5 ? '200px' : 'auto',
+          overflowY: 'auto',
+        }}
+      >
+        {stall.items.map((item) => (
+          <div key={item.id} className="item-row">
+            <div className="item-header">
+              <span className="item-name">{item.name}</span>
+              <FaEdit
+                className="edit-icon"
+                onClick={() => handleEditItem(stall.id, item.id)}
+              />
+            </div>
+            {item.isEditing ? (
+              <div className="item-edit">
+                <input
+                  type="text"
+                  value={item.name}
+                  onChange={(e) =>
+                    handleChangeItem(stall.id, item.id, 'name', e.target.value)
+                  }
+                />
+                <input
+                  type="number"
+                  value={item.quantity}
+                  onChange={(e) =>
+                    handleChangeItem(stall.id, item.id, 'quantity', e.target.value)
+                  }
+                />
+                <button
+                  onClick={() =>
+                    handleSaveItem(stall.id, item.id, item.name, item.quantity)
+                  }
+                >
+                  <FaSave />
+                  Save
+                </button>
+              </div>
+            ) : (
+              <div>
+                <span className="item-quantity">Quantity: {item.quantity}</span>
+              </div>
+            )}
           </div>
         ))}
       </div>
-    </div>
-  );
-};
 
-export default StallStaffPage;
+      {/* Add New Item Button outside of the item list */}
+      <button
+        onClick={() => handleAddItem(stall.id)}
+        className="add-item-btn"
+      >
+        Add New Item
+      </button>
+    </div>
+  ))}
+</div>
+      </div>
+    );
+  };
+  
+  export default StallStaffPage;
