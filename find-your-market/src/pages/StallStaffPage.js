@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Select from 'react-select';
 import '../styles/StallStaff.css';
 import { FaPlus } from 'react-icons/fa';
-import Popup from '../components/Popup'; // Import the Popup component
 
 const StallStaffPage = () => {
   const [stalls, setStalls] = useState([
@@ -25,104 +24,114 @@ const StallStaffPage = () => {
     { value: 'Harbor Market', label: 'Harbor Market' },
   ];
 
-  const [newStallId, setNewStallId] = useState(stalls.length + 1);
-  const [showPopup, setShowPopup] = useState(false);
+  const [showAddForm, setShowAddForm] = useState(false);
   const [stallName, setStallName] = useState('');
   const [stallLocation, setStallLocation] = useState('');
   const [stallDescription, setStallDescription] = useState('');
 
-  const openPopup = () => {
-    setShowPopup(true);
-  };
-
-  const closePopup = () => {
-    setShowPopup(false);
+  const handleAddStall = () => {
+    if (!stallName || !stallLocation || !stallDescription) {
+      alert('Please fill out all fields.');
+      return;
+    }
+    const newStall = {
+      id: stalls.length + 1,
+      name: stallName,
+      location: stallLocation,
+      description: stallDescription,
+      items: [],
+    };
+    setStalls([...stalls, newStall]);
     setStallName('');
     setStallLocation('');
     setStallDescription('');
+    setShowAddForm(false);
   };
 
-  const handleAddStall = () => {
-    if (stallName && stallLocation && stallDescription) {
-      setStalls([
-        ...stalls,
-        {
-          id: newStallId,
-          name: stallName,
-          location: stallLocation,
-          description: stallDescription,
-          items: [],
-        },
-      ]);
-      setNewStallId(newStallId + 1);
+  const handleItemQuantityChange = (stallId, itemIndex, quantity) => {
+    setStalls(stalls.map(stall => 
+      stall.id === stallId
+        ? {
+            ...stall,
+            items: stall.items.map((item, index) =>
+              index === itemIndex ? { ...item, quantity } : item
+            ),
+          }
+        : stall
+    ));
+  };
 
-      // Close popup and reset fields
-      closePopup();
-      alert('Stall added successfully!');
-    } else {
-      alert('Please fill out all fields.');
+  const handleAddItem = (stallId, itemName) => {
+    if (itemName.trim() !== '') {
+      setStalls(stalls.map(stall => 
+        stall.id === stallId
+          ? {
+              ...stall,
+              items: [...stall.items, { name: itemName, quantity: 0 }],
+            }
+          : stall
+      ));
     }
   };
 
   return (
     <div className="stall-page-container">
-      <h1 className="stall-page-title">Stall Management</h1>
-      <button className="add-stall-btn" onClick={openPopup}>
+      <h1 className="stall-page-title">Your Stalls</h1>
+
+      <button className="add-stall-btn" onClick={() => setShowAddForm(!showAddForm)}>
         <FaPlus /> Add Stall
       </button>
 
-      {/* Popup Modal for Adding Stall */}
-      <Popup
-        show={showPopup}
-        onClose={closePopup}
-        title="Add New Stall"
-        buttonText="Add Stall"
-        onConfirm={handleAddStall}
-        isError={false}
-      >
-        {/* The form to add a new stall */}
-        <div className="input-group">
-          <label htmlFor="stall-name">Stall Name</label>
-          <input
-            type="text"
-            id="stall-name"
-            placeholder="Enter stall name"
-            value={stallName}
-            onChange={(e) => setStallName(e.target.value)}
-          />
+      {/* Inline form for adding a stall */}
+      {showAddForm && (
+        <div className="add-stall-form">
+          <h2>Add New Stall</h2>
+          <div className="input-group">
+            <label htmlFor="stall-name">Stall Name</label>
+            <input
+              type="text"
+              id="stall-name"
+              placeholder="Enter stall name"
+              value={stallName}
+              onChange={(e) => setStallName(e.target.value)}
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="stall-location">Market Location</label>
+            <Select
+              id="stall-location"
+              options={marketLocations}
+              value={marketLocations.find((loc) => loc.value === stallLocation)}
+              onChange={(option) => setStallLocation(option.value)}
+              placeholder="Select location"
+              isSearchable={true}
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="stall-description">Stall Description</label>
+            <textarea
+              id="stall-description"
+              value={stallDescription}
+              onChange={(e) => setStallDescription(e.target.value)}
+              placeholder="Enter stall description"
+            />
+          </div>
+          <button onClick={handleAddStall}>Save Stall</button>
         </div>
-        <div className="input-group">
-          <label htmlFor="stall-location">Market Location</label>
-          <Select
-            id="stall-location"
-            options={marketLocations}
-            value={marketLocations.find((loc) => loc.value === stallLocation)}
-            onChange={(option) => setStallLocation(option.value)}
-            placeholder="Select location"
-            isSearchable={true}
-          />
-        </div>
-        <div className="input-group">
-          <label htmlFor="stall-description">Stall Description</label>
-          <textarea
-            id="stall-description"
-            value={stallDescription}
-            onChange={(e) => setStallDescription(e.target.value)}
-            placeholder="Enter stall description"
-          />
-        </div>
-      </Popup>
+      )}
 
       <div className="stalls-container">
         {stalls.map((stall) => (
           <div key={stall.id} className="stall-card">
             <h2>{stall.name}</h2>
+
+            {/* Editable fields for each stall */}
             <div className="input-group">
               <label>Market Location:</label>
               <Select
                 options={marketLocations}
                 value={marketLocations.find((loc) => loc.value === stall.location)}
-                onChange={(location) => setStalls(stalls.map(stall => stall.id === stall.id ? {...stall, location: location.value} : stall))}
+                onChange={(location) => setStalls(stalls.map(s => s.id === stall.id ? { ...s, location: location.value } : s))}
                 placeholder="Select Location"
                 isSearchable={true}
               />
@@ -131,10 +140,11 @@ const StallStaffPage = () => {
               <label>Description:</label>
               <textarea
                 value={stall.description}
-                onChange={(e) => setStalls(stalls.map(stall => stall.id === stall.id ? {...stall, description: e.target.value} : stall))}
+                onChange={(e) => setStalls(stalls.map(s => s.id === stall.id ? { ...s, description: e.target.value } : s))}
                 placeholder="Enter stall description"
               />
             </div>
+
             <h3 className="item-title">Items</h3>
             <div className="items-list">
               {stall.items.map((item, index) => (
@@ -145,27 +155,34 @@ const StallStaffPage = () => {
                     value={item.quantity}
                     min="0"
                     onChange={(e) =>
-                      setStalls(stalls.map(stall => stall.id === stall.id ? {
-                        ...stall,
-                        items: stall.items.map((item, idx) => idx === index ? {...item, quantity: Number(e.target.value)} : item),
-                      } : stall))
+                      handleItemQuantityChange(stall.id, index, Number(e.target.value))
                     }
                   />
                 </div>
               ))}
             </div>
+
+            {/* Add item form */}
             <div className="add-item">
               <input
                 type="text"
                 placeholder="Item name"
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && e.target.value.trim() !== '') {
-                    // add item logic here
-                    e.target.value = '';
+                    handleAddItem(stall.id, e.target.value.trim());
+                    e.target.value = ''; // Clear the input field
                   }
                 }}
               />
-              <button>
+              <button
+                onClick={(e) => {
+                  const itemName = e.target.previousElementSibling.value;
+                  if (itemName.trim() !== '') {
+                    handleAddItem(stall.id, itemName);
+                    e.target.previousElementSibling.value = ''; // Clear input
+                  }
+                }}
+              >
                 Add Item
               </button>
             </div>
