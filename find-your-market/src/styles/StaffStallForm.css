@@ -1,0 +1,56 @@
+/* Add in StallStaff.css */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .add-stall-form .input-group {
+    margin-bottom: 15px;
+  }
+  
+  .add-stall-form .input-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .add-stall-form .input-group input,
+  .add-stall-form .input-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .submit-btn, .close-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .submit-btn {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .close-btn {
+    background-color: #dc3545;
+    color: white;
+    margin-left: 10px;
+  }
