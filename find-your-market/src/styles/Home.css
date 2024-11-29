@@ -25,3 +25,99 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
     border: 1px solid #ddd; /* Optional: Add a border */
 }
+
+/* Home.css */
+
+.home-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.home-title {
+    font-size: 2rem;
+    color: #333;
+}
+
+.pref-market {
+    font-size: 1.5rem;
+    color: #555;
+}
+
+.slideshow-container {
+    width: 80%;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.slideshow-image {
+    width: 100%;
+    height: auto;
+    transition: opacity 1s ease-in-out;
+}
+
+.curved-box {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border-radius: 25px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.stall-list {
+    margin-top: 40px;
+    text-align: left;
+    width: 50%;
+    margin: 20px auto;
+}
+
+.stall-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.stall-name {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.opening-time {
+    font-size: 1rem;
+    color: #666;
+}
+.slideshow-container {
+    position: relative;
+    max-width: 100%;
+    width: 600px; /* Adjust the width of the image */
+    margin: auto;
+}
+
+.slideshow-image {
+    width: 100%;
+    height: auto;
+}
+
+.arrow-left, .arrow-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: black;
+    background-color: transparent;
+    padding: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.arrow-left {
+    left: 10px;
+}
+
+.arrow-right {
+    right: 10px;
+}

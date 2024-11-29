@@ -12,7 +12,7 @@ const StallStaffPage = () => {
       location: 'Downtown Market',
       description: 'Fresh fruits and vegetables.',
       items: [],
-      isEditing: false, // Track edit mode for stall
+      isEditing: false, 
     },
   ]);
 
