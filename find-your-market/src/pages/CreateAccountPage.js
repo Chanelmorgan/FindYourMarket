@@ -17,13 +17,44 @@ function CreateAccountPage() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [accountType, setAccountType] = useState(''); 
-  const [publicRole, setPublicRole] = useState(null);      // For Public dropdown
-  const [staffType, setStaffType] = useState(null);   // For staff dropdown
+  const [publicRole, setPublicRole] = useState(null);      
   const [error, setError] = useState('');
   const [showPopup, setShowPopup] = useState(false); 
   const [isErrorPopup, setIsErrorPopup] = useState(false); 
   const [isIncorrectPasswordPopup, setIsIncorrectPasswordPopup] = useState(false); 
-  
+  const [showAddStallForm, setShowAddStallForm] = useState(false);
+  const [newStallName, setNewStallName] = useState('');
+  const [newStallDescription, setNewStallDescription] = useState('');
+  const [newStallLocation, setNewStallLocation] = useState('');
+  const [staffType, setStaffType] = useState(null); 
+  const [staffTypeOptions, setStaffTypeOptions] = useState([
+    { value: 'Retailer', label: 'Retailer' },
+    { value: 'Wholesaler', label: 'Wholesaler' }
+  ]); 
+
+  const handleAddStallClick = () => {
+    setShowAddStallForm(true);
+  };
+
+  const handleSaveStall = () => {
+    if (newStallName && newStallDescription && newStallLocation) {
+      const newOption = { value: newStallName, label: newStallName };
+
+      // Update the options list with the new stall
+      setStaffTypeOptions((prevOptions) => [...prevOptions, newOption]);
+
+      // Automatically set the new stall as the selected option
+      setStaffType(newOption);
+
+      // Reset and close the form
+      setShowAddStallForm(false);
+      setNewStallName('');
+      setNewStallDescription('');
+      setNewStallLocation('');
+    }
+  };
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -74,10 +105,6 @@ function CreateAccountPage() {
     { value: 'Subscriber', label: 'Subscriber' }
   ];
 
-  const staffTypeOptions = [
-    { value: 'Retailer', label: 'Retailer' },
-    { value: 'Wholesaler', label: 'Wholesaler' }
-  ];
 
   return (
     <div className="create-account-container">
@@ -222,7 +249,9 @@ function CreateAccountPage() {
                 isSearchable={true}
               />
             </div>
+            
           )}
+          
 
           {accountType === 'Staff' && (
             <div className="input-group">
@@ -235,8 +264,48 @@ function CreateAccountPage() {
                 placeholder="Stall Name"
                 isSearchable={true}
               />
+               <p className="add-stall-link" onClick={handleAddStallClick}>
+                    + Add New Stall
+              </p>
             </div>
           )}
+             {showAddStallForm && (
+        <div className="new-stall-form">
+          <h3>Add New Stall</h3>
+          <div className="input-group">
+            <label htmlFor="stall-name">Stall Name</label>
+            <input
+              type="text"
+              id="stall-name"
+              value={newStallName}
+              onChange={(e) => setNewStallName(e.target.value)}
+              placeholder="Enter stall name"
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="stall-description">Description</label>
+            <input
+              type="text"
+              id="stall-description"
+              value={newStallDescription}
+              onChange={(e) => setNewStallDescription(e.target.value)}
+              placeholder="Enter stall description"
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="stall-location">Location</label>
+            <input
+              type="text"
+              id="stall-location"
+              value={newStallLocation}
+              onChange={(e) => setNewStallLocation(e.target.value)}
+              placeholder="Enter stall location"
+            />
+          </div>
+          <button className="new-stall-form-save-btn" onClick={handleSaveStall}>Save Stall</button>
+          <button className="new-stall-form-save-btn" onClick={() => setShowAddStallForm(false)}>Cancel</button>
+        </div>
+      )}
 
           <button type="submit" className="create-account-btn">Create Account</button>
           <Link to="/Login" className="login-links">Login</Link>

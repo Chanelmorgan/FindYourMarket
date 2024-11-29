@@ -127,6 +127,40 @@ h2 {
     border-radius: 4px;
   }
 
+  .add-stall-link {
+    color: var(--darkgreen);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .new-stall-form {
+    border: 2px solid var(--darkgreen);
+    padding: 10px;
+    margin-top: 10px;
+    background-color: var(--lightgreen); 
+   margin-bottom: 40px;
+   border-radius: 25px;
+  }
+  
+  .new-stall-form h3 {
+    margin-bottom: 10px; 
+    padding: 10px; 
+  }
+
+  .new-stall-form-save-btn{
+   margin-right: 5px;
+    width: 30%;
+    padding: 12px;
+    background-color: var(--darkgreen);
+    color: white;
+    border: 2px solid #2a411c;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+
+
 @media (max-width: 768px) {
   .create-account-box {
     width: 90%;

@@ -27,7 +27,7 @@ const Markets = () => {
           <div key={market.id} className="markets-item">
             <Link to={market.link} className="markets-link">
               <div className="button-container">
-                <div className="logo-container">
+                <div className="logo-container-market">
                   <img src={market.logo} alt={market.name} className="markets-logo" />
                 </div>
                 <div className="name-container">
