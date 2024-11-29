@@ -14,29 +14,25 @@
 }
 
 .curved-box {
-    display: inline-block; /* Adapts to content size */
-    padding: 10px 20px; /* Adjust for desired size */
-    background-color: #f0f0f0; /* Change to your preferred background color */
-    color: #333; /* Text color */
-    font-size: 40px; /* Adjust as needed */
-    font-weight: bold; /* Makes the text stand out */
-    text-align: center; /* Centers the text inside */
-    border-radius: 25px; /* Makes the box curved */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
-    border: 1px solid #ddd; /* Optional: Add a border */
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    color: #333; 
+    font-size: 40px; 
+    font-weight: bold; 
+    text-align: center; 
+    border-radius: 25px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    border: 1px solid #ddd; 
 }
 
-/* Home.css */
+
 
 .home-container {
     text-align: center;
     padding: 20px;
 }
 
-.home-title {
-    font-size: 2rem;
-    color: #333;
-}
 
 .pref-market {
     font-size: 1.5rem;
@@ -68,25 +64,24 @@
 }
 
 .content-container {
-    display: flex;
-    flex-direction: column; 
+    display: flex; 
+    align-items: center;
     justify-content: center; 
-    align-items: center; 
+    gap: 20px; 
+    background-color: #f0f0f0;
     text-align: center; 
   }
   
-
   .crowd-level-title {
-    font-size: 2rem; /* Adjust title size */
-    font-weight: bold; /* Makes the title stand out */
-    margin-bottom: 20px; 
+    font-size: 2rem; 
+    font-weight: bold;
     color: #333;
   }
-  
-  .image-crowd-level {
-    width: 30px; /* Adjust image width as needed */
+
+  .video {
+    width: 60px;
     height: auto;
-    object-fit: contain; /* Ensure the image maintains its aspect ratio */
+    border-radius: 10px; 
   }
 
 .stall-list {
@@ -115,7 +110,7 @@
 .slideshow-container {
     position: relative;
     max-width: 100%;
-    width: 600px; /* Adjust the width of the image */
+    width: 600px; 
     margin: auto;
 }
 

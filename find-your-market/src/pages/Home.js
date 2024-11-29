@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import '../styles/index.css'; 
 import '../styles/Home.css';  
 import chartImage1 from '../assets/images/todayChart.png';
-import chartImage2 from '../assets/images/monthChart.png';
-import crowdLevelImage from '../assets/images/high.png';  
+import chartImage2 from '../assets/images/monthChart.png'; 
 import heatImage from '../assets/images/newHeat.png'; 
+import video from '../assets/images/high_flashing_2.mp4'; 
 
 const images = [
     chartImage1,
@@ -13,10 +13,10 @@ const images = [
 ];
 
 const stallsData = [
-    { name: 'Fresh Fruits', openingTime: '8:00 AM - 6:00 PM' },
-    { name: 'Vegetable Stall', openingTime: '9:00 AM - 5:00 PM' },
-    { name: 'Meat Stall', openingTime: '7:00 AM - 4:00 PM' },
-    { name: 'Bakery', openingTime: '8:00 AM - 7:00 PM' },
+    { name: 'Stall 1', openingTime: '8:00 AM - 6:00 PM' },
+    { name: 'Stall 2 ', openingTime: '9:00 AM - 5:00 PM' },
+    { name: 'Stall 3', openingTime: '7:00 AM - 4:00 PM' },
+    { name: 'Stall 4', openingTime: '8:00 AM - 7:00 PM' },
 ];
 
 function Home() {
@@ -42,11 +42,15 @@ function Home() {
             <div className="curved-box">
   <div className="content-container">
     <span className="crowd-level-title">Live Crowd Level</span>
-    <img 
-      src={crowdLevelImage} 
-      alt="Crowd Level" 
-      className="image-crowd-level" 
-    />
+    <video
+        className="video"
+        src={video}
+        type="video/mp4"
+        loop
+        muted
+        autoPlay
+        playsInline
+      />
   </div>
 </div>
 

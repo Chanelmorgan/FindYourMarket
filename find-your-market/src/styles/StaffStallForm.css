@@ -53,9 +53,9 @@
     color: white;
     margin-left: 10px;
   }
-  /* Add in StallStaff.css */
+  
 .items-list {
-  max-height: 200px;  /* Adjust this value as needed */
+  max-height: 200px; 
   overflow-y: auto;
 }
 
