@@ -35,11 +35,8 @@ function Market() {
 
     return (
         <div className="home-container">
-            <h2 className="home-title">Hello, Tara!</h2>
-            <h3 className="pref-market">Example Market</h3>
-            
-     
-            <div className="curved-box">
+            <h3 className="example-market">Example Market</h3>
+     <div className="curved-box">
   <div className="content-container">
     <span className="crowd-level-title">Live Crowd Level</span>
     <video
@@ -67,14 +64,22 @@ function Market() {
                 </div>
             </div>
 
+        <div className="stall-container">
+            <div className="titles">
+                <div className="home-stall-title">Stall</div>
+                <div className="home-OT-title">Opening Time</div>
+            </div>
+
             <div className="stall-list">
                 {stallsData.map((stall, index) => (
                     <div key={index} className="stall-item">
-                        <span className="stall-name">{stall.name}</span>
-                        <span className="opening-time">{stall.openingTime}</span>
+                        <a href="/Stall" className="stall-name">{stall.name}</a>
+                        <a href="/Stall" className="opening-time">{stall.openingTime}</a>
                     </div>
                 ))}
             </div>
+        </div>
+    
         </div>
     );
 }

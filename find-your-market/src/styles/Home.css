@@ -35,10 +35,16 @@ body{
     padding: 20px;
 }
 
-
 .pref-market {
     padding-left: 10px;
     font-size: 2.5rem;
+    text-align: left;
+}
+
+.example-market{
+    padding-top: 60px;
+    padding-left: 10px;
+    font-size: 4rem;
     text-align: left;
 }
 
