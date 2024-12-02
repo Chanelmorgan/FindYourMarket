@@ -70,8 +70,8 @@ function Home() {
             <div className="stall-list">
                 {stallsData.map((stall, index) => (
                     <div key={index} className="stall-item">
-                        <span className="stall-name">{stall.name}</span>
-                        <span className="opening-time">{stall.openingTime}</span>
+                        <a href="/Stall" className="stall-name">{stall.name}</a>
+                        <a href="/Stall" className="opening-time">{stall.openingTime}</a>
                     </div>
                 ))}
             </div>
