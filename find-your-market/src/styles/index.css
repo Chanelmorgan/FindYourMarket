@@ -1,13 +1,13 @@
 :root {
-  --font-color: #333; /* Default font color */
-  --background-color: #fff; /* Default background */
+  --font-color: #555; /* Default font color */
+  --background-color: #2b2edf; /* Default background */
 }
 
 body {
   font-family: "Dongle", sans-serif; /* Default font */
   font-size: 16px; /* Default font size */
   color: var(--font-color);
-  background-color: var(--background-color);
+  background-color: #2b2edf;
   margin: 0;
   padding: 0;
   background-color: transparent;
@@ -68,11 +68,11 @@ body.dyslexia-friendly, html.dyslexia-friendly {
 
 /* Icon Buttons */
 .icon-button {
-  background-color: #f1f1f1; /* Light gray background */
+  background-color: #e7f5eb; /* Light gray background */
   border: none; /* No border */
   cursor: pointer; /* Pointer cursor for clickable elements */
   font-size: 20px; /* Icon size */
-  color: #666; /* Default icon color */
+  color: #534757; /* Default icon color */
   padding: 10px; /* Padding around the icon */
   border-radius: 50%; /* Circular button */
   height: 40px; /* Ensure height and width are equal */

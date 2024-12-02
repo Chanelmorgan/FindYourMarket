@@ -4,7 +4,7 @@ import '../styles/Home.css';
 import chartImage1 from '../assets/images/todayChart.png';
 import chartImage2 from '../assets/images/monthChart.png'; 
 import heatImage from '../assets/images/newHeat.png'; 
-import video from '../assets/images/high_flashing_2.mp4'; 
+import video from '../assets/images/high_flashing.mp4'; 
 
 const images = [
     chartImage1,
@@ -67,6 +67,12 @@ function Home() {
                 </div>
             </div>
 
+        <div className="stall-container">
+            <div className="titles">
+                <div className="home-stall-title">Stall</div>
+                <div className="home-OT-title">Opening Time</div>
+            </div>
+
             <div className="stall-list">
                 {stallsData.map((stall, index) => (
                     <div key={index} className="stall-item">
@@ -75,6 +81,8 @@ function Home() {
                     </div>
                 ))}
             </div>
+        </div>
+    
         </div>
     );
 }

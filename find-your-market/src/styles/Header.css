@@ -5,8 +5,8 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: var(--coral);
-  color: white;
+  background-color: var(--purple);
+  color: #e7f5eb;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -16,13 +16,12 @@
 }
 
 .hamburger {
+  padding-top: 12px;
   font-size: 30px;
   cursor: pointer;
 }
 
-
 .logo-container {
-  flex-grow: 1;
   text-align: center;
   display: flex;
   justify-content: center; 
@@ -31,11 +30,10 @@
 }
 
 .header-logo {
-  height: 100px; 
+  height: 45px; 
   width: auto; 
-  margin-bottom: -10px; 
   transition: all 0.3s ease; 
-  padding-right: 10px;
+  padding-left: 55px;
 }
 
 
@@ -45,7 +43,7 @@
   left: -250px; 
   width: 250px;
   height: 100%;
-  background-color: var(--coral);
+  background-color: var(--purple);
   transition: left 0.3s ease; 
   z-index: 999; 
   padding-top: 60px;
@@ -64,46 +62,49 @@
 }
 
 .menuItems {
+  font-family: "Dongle", sans-serif;
+  font-size: 30px;
   list-style: none;
   padding-left: 0;
 }
 
 .menuButton {
+  font-family: "Dongle", sans-serif;
   background: none;
   border: none;
-  color: white;
-  font-size: 20px;
+  color: #e7f5eb;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   text-align: left;
-  padding: 15px 20px;
   cursor: pointer;
 }
 
 .menuButton:hover {
-  background-color: var(--lightgreen);
+  background-color: #cfb9ea;
 }
 
 .menuItems li {
+  font-family: "Dongle", sans-serif;
   position: relative; 
   padding: 15px 20px;
-  border-bottom: 1px solid var(--lightgreen);
+  border-bottom: 1px solid #e7f5eb;
   cursor: pointer; 
 }
 
 .menuItems li a {
+  font-family: "Dongle", sans-serif;
   text-decoration: none;
-  color: white;
-  font-size: 20px;
+  color: #e7f5eb;
+  font-size: 40px;
   display: flex;
   justify-content: space-between; 
   align-items: center;
 }
 
 .menuItems li a:hover {
-  background-color: var(--lightgreen);
+  background-color: #e7f5eb;
 }
 
 .dropdown-arrow {
@@ -144,13 +145,13 @@
 .menuItems li .dropdown .stallsDropdown li {
   padding: 10px 20px;
   border-bottom: none; 
-  background-color: var(--lightgreen);
+  background-color:#e7f5eb;
   color: var(--darkgreen);
 }
 
 .menuItems li .dropdown .stallsDropdown li:hover {
   background-color: var(--darkgreen);
-  color: var(--lightgreen);
+  color: #e7f5eb;
 }
 
 
@@ -188,7 +189,7 @@
 
 .logoutButton-header-btn:hover {
   background-color: var(--darkgreen);
-  color: var(--lightgreen);
+  color: #e7f5eb;
 }
 
 

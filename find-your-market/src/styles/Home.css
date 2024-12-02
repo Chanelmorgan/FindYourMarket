@@ -1,32 +1,33 @@
 @import 'variables.css';
 @import url('https://fonts.googleapis.com/css2?family=Cabin&family=Dongle&display=swap');
 
+body{
+    background-color: #e7f5eb;
+    color: #534757;
+}
+
 .home-title{
     padding-top: 60px;
     text-align: center;
     font-size: 70px;
-    margin-bottom: 0px;
-}
-
-.pref-market{
-    font-size: 50px;
-    padding-left: 10px;
+    margin-bottom: -15px;
 }
 
 .curved-box {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #f0f0f0;
-    color: #333; 
-    font-size: 40px; 
+    padding: 5px 15px;
+    background-color: #534757; 
+    color: #e7f5eb;
+    margin-bottom: 10px;
     font-weight: bold; 
-    text-align: center; 
+    text-align: left; /* Align the text inside to the left */
     border-radius: 25px; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     border: 1px solid #ddd; 
+    font-size: 1.2rem;
+    display: block; /* Ensure it behaves like a block element */
+    margin-left: 0; /* Align the box to the left */
+    float: left; /* Optional: Floats it left */
 }
-
-
 
 .home-container {
     text-align: center;
@@ -35,8 +36,9 @@
 
 
 .pref-market {
-    font-size: 1.5rem;
-    color: #555;
+    padding-left: 10px;
+    font-size: 2.5rem;
+    text-align: left;
 }
 
 .slideshow-container {
@@ -52,43 +54,56 @@
     transition: opacity 1s ease-in-out;
 }
 
-.curved-box {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #f0f0f0;
-    border-radius: 25px;
-    display: inline-block;
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: #333;
-}
-
 .content-container {
     display: flex; 
     align-items: center;
     justify-content: center; 
-    gap: 20px; 
-    background-color: #f0f0f0;
+    gap: 10px; 
     text-align: center; 
-  }
-  
-  .crowd-level-title {
+}
+
+.crowd-level-title {
     font-size: 2rem; 
     font-weight: bold;
-    color: #333;
-  }
+}
 
-  .video {
-    width: 60px;
+.video {
+    width: 45px;
     height: auto;
     border: none;
-  }
+}
+
+.stall-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    max-width: 100%; /* Ensures it fills the page width */
+}
+
+.titles {
+    display: flex;
+    justify-content: space-between; /* Ensure even spacing between columns */
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.8rem; /* Increase font size for the heading */
+    text-align: left; /* Align heading to the left */
+    padding: 0 10px;
+}
+
+.home-stall-title,
+.home-OT-title {
+    flex: 1; /* Ensure columns adjust evenly */
+}
+
+.home-OT-title{
+    padding-left: 50px;
+}
 
 .stall-list {
-    margin-top: 40px;
-    text-align: left;
-    width: 50%;
-    margin: 20px auto;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 10px; /* Adds spacing between rows */
+    font-size: 1.5rem; /* Increase font size for the content */
 }
 
 .stall-item {
@@ -99,19 +114,20 @@
 }
 
 .stall-name {
-    font-size: 1.2rem;
-    color: #333;
+    font-size: inherit; /* Inherit the increased size from .stall-list */
 }
 
 .opening-time {
-    font-size: 1rem;
-    color: #666;
+    font-size: inherit; /* Inherit the increased size from .stall-list */
 }
+
+
 .slideshow-container {
     position: relative;
     max-width: 100%;
     width: 600px; 
     margin: auto;
+    padding-top: 15px;
 }
 
 .slideshow-image {

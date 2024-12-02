@@ -13,6 +13,21 @@ button {
   font-size: 1rem; /* Adjust buttons */
 }
 
+:root {
+  --font-color: #d10f0f; /* Default font color */
+  --background-color: #2b2edf; /* Default background */
+}
+
+body {
+  font-family: "Dongle", sans-serif; /* Default font */
+  font-size: 16px; /* Default font size */
+  color: var(--font-color);
+  background-color: var(--background-color);;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
 .App {
   display: flex;
   flex-direction: column;

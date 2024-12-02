@@ -4,7 +4,7 @@ import "../styles/Header.css";
 import Popup from "../components/Popup";
 import { useNavigate } from "react-router-dom";
 import Accessible from "../components/Accessible";
-import logoImage from '../assets/images/logo2.png';
+import logoImage from '../assets/images/Find Your Market_transparent-.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
