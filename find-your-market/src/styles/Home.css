@@ -81,7 +81,7 @@
   .video {
     width: 60px;
     height: auto;
-    border-radius: 10px; 
+    border: none;
   }
 
 .stall-list {
