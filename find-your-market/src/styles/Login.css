@@ -1,5 +1,10 @@
 @import 'variables.css';
 
+body{
+  color: #534757;
+  font-family: "Dongle", sans-serif; 
+}
+
 .login-container {
     display: flex;
     justify-content: center;
@@ -30,7 +35,6 @@
   
   .input-group label {
     font-size: 14px;
-    color: #666;
     display: block;
   }
   
@@ -49,24 +53,21 @@
   
   .login-btn {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     background-color: #2a411c;
     color: white;
     border: none;
-    font-size: 16px;
     border-radius: 4px;
     cursor: pointer; 
     margin-bottom: 15px;
   }
   .password-links{
     font-size: 14px;
-    color: #666;
     text-align: right;
     padding-top: 5px;
   }
   .login-links{
     font-size: 14px;
-    color: #666;
   }
  
   
@@ -97,7 +98,7 @@
     }
   
     h2 {
-      font-size: 24px;
+      font-size: 40px;
     }
   
     .input-group input {
@@ -105,6 +106,7 @@
     }
   
     .login-btn {
-      font-size: 14px;
+      font-family: "Dongle", sans-serif;
+      font-size: 35px;
     }
   }

@@ -145,9 +145,9 @@ button:hover {
 
 /* Error message styling */
 .error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 10px;
+    color: rgb(220, 68, 68);
+    font-size: 25px;
+    margin-top: 5px;
 }
 
 /* Item list styling */
