@@ -8,7 +8,7 @@ body{
 }
 
 .home-title{
-    padding-top: 60px;
+    padding-top: 50px;
     text-align: center;
     font-size: 70px;
     margin-bottom: -15px;
@@ -18,7 +18,7 @@ body{
     padding: 5px 15px;
     background-color: #534757; 
     color: #e7f5eb;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-weight: bold; 
     text-align: left; /* Align the text inside to the left */
     border-radius: 25px; 
@@ -49,10 +49,13 @@ body{
 }
 
 .slideshow-container {
+    padding-top: 10px;
     width: 80%;
     margin: 20px auto;
     position: relative;
     overflow: hidden;
+    border-top: 1px solid #847c86; /* Line above the slideshow */
+    border-bottom: 1px solid #847c86; /* Line below the slideshow */
 }
 
 .slideshow-image {
@@ -81,6 +84,7 @@ body{
 }
 
 .stall-container {
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     padding: 10px;
