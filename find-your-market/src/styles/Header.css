@@ -173,6 +173,7 @@
 }
 
 .logoutButton-header-btn{
+  font-family: "Dongle", sans-serif;
   display: flex;
   align-items: center;
   background-color: #f44336; 
@@ -181,7 +182,7 @@
   padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 25px;
 }
 
 .logoutButton-header-btn svg {
