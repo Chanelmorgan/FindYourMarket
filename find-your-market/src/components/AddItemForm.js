@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import '../styles/StaffStallForm.css';
 
@@ -9,18 +8,22 @@ const AddItemForm = ({ stallId, onSubmit, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (itemName && quantity > 0 && price > 0) {
-      onSubmit(stallId, itemName, quantity, price);
+
+    const parsedQuantity = Number(quantity);
+ 
+
+    if (itemName && parsedQuantity > 0) {
+      onSubmit(stallId, itemName, parsedQuantity);
       onClose();
     } else {
-      alert('Please fill out all fields correctly.');
+      alert('Please fill out all fields correctly with valid values.');
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="add-item-form">
       <div className="input-group">
-        <label>Item Name:</label>
+        <label className="item-label">Item Name:</label>
         <input
           type="text"
           value={itemName}
@@ -29,7 +32,7 @@ const AddItemForm = ({ stallId, onSubmit, onClose }) => {
         />
       </div>
       <div className="input-group">
-        <label>Quantity:</label>
+        <label className="item-label">Quantity:</label>
         <input
           type="number"
           value={quantity}
@@ -37,7 +40,7 @@ const AddItemForm = ({ stallId, onSubmit, onClose }) => {
           required
         />
       </div>
-
+      
       <button type="submit" className="submit-btn">Add Item</button>
       <button type="button" className="close-btn" onClick={onClose}>Close</button>
     </form>

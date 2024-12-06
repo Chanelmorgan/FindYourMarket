@@ -26,6 +26,7 @@
   .add-stall-form .input-group label {
     display: block;
     margin-bottom: 5px;
+    color: black;
   }
   
   .add-stall-form .input-group input,
@@ -45,12 +46,12 @@
   
   .submit-btn {
     background-color: #28a745;
-    color: white;
+    color: black;
   }
   
   .close-btn {
     background-color: #dc3545;
-    color: white;
+    color: black;
     margin-left: 10px;
   }
   
@@ -65,4 +66,8 @@
 
 .add-item-btn {
   margin-top: 10px;
+}
+
+.item-label{
+  color: #000;
 }

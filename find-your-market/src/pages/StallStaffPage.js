@@ -287,8 +287,7 @@ const StallStaffPage = () => {
                               stall.id,
                               item.id,
                               item.name,
-                              item.quantity,
-                              item.price
+                              item.quantity
                             )
                           }
                         />
@@ -304,7 +303,6 @@ const StallStaffPage = () => {
                     )}
                   </div>
                   <div className="item-quantity">Quantity: {item.quantity}</div>
-                  <div className="item-price">Price: ${item.price}</div>
                 </div>
               ))}
             </div>
