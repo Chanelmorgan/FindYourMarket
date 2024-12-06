@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaAdjust, FaFont } from 'react-icons/fa'; // Import icons
+import { FaAdjust, FaFont } from 'react-icons/fa'; 
 
 function Accessible() {
   const [isHighContrast, setHighContrast] = useState(

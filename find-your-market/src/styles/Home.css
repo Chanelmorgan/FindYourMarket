@@ -20,7 +20,7 @@ body{
     color: #e7f5eb;
     margin-bottom: 20px;
     font-weight: bold; 
-    text-align: left; /* Align the text inside to the left */
+    text-align: left; 
     border-radius: 25px; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     border: 1px solid #ddd; 
@@ -54,8 +54,8 @@ body{
     margin: 20px auto;
     position: relative;
     overflow: hidden;
-    border-top: 1px solid #847c86; /* Line above the slideshow */
-    border-bottom: 1px solid #847c86; /* Line below the slideshow */
+    border-top: 1px solid #847c86; 
+    border-bottom: 1px solid #847c86; 
 }
 
 .slideshow-image {
@@ -88,22 +88,22 @@ body{
     display: flex;
     flex-direction: column;
     padding: 10px;
-    max-width: 100%; /* Ensures it fills the page width */
+    max-width: 100%; 
 }
 
 .titles {
     display: flex;
-    justify-content: space-between; /* Ensure even spacing between columns */
+    justify-content: space-between; 
     margin-bottom: 10px;
     font-weight: bold;
-    font-size: 1.8rem; /* Increase font size for the heading */
-    text-align: left; /* Align heading to the left */
+    font-size: 1.8rem; 
+    text-align: left; 
     padding: 0 10px;
 }
 
 .home-stall-title,
 .home-OT-title {
-    flex: 1; /* Ensure columns adjust evenly */
+    flex: 1; 
 }
 
 .home-OT-title{
@@ -112,9 +112,9 @@ body{
 
 .stall-list {
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    gap: 10px; /* Adds spacing between rows */
-    font-size: 1.5rem; /* Increase font size for the content */
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.5rem; 
 }
 
 .stall-item {
@@ -125,11 +125,11 @@ body{
 }
 
 .stall-name {
-    font-size: inherit; /* Inherit the increased size from .stall-list */
+    font-size: inherit; 
 }
 
 .opening-time {
-    font-size: inherit; /* Inherit the increased size from .stall-list */
+    font-size: inherit; 
 }
 
 

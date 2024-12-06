@@ -6,21 +6,21 @@
   font-size: 1.125rem;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-size: 1.2em; /* Make headings slightly larger */
+  font-size: 1.2em; 
 }
 
 button {
-  font-size: 1rem; /* Adjust buttons */
+  font-size: 1rem; 
 }
 
 :root {
-  --font-color: #d10f0f; /* Default font color */
-  --background-color: #2b2edf; /* Default background */
+  --font-color: #d10f0f; 
+  --background-color: #2b2edf; 
 }
 
 body {
-  font-family: "Dongle", sans-serif; /* Default font */
-  font-size: 16px; /* Default font size */
+  font-family: "Dongle", sans-serif; 
+  font-size: 16px;
   color: var(--font-color);
   background-color: var(--background-color);;
   margin: 0;

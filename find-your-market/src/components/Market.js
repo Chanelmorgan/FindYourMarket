@@ -50,17 +50,15 @@ function Market() {
       />
   </div>
 </div>
-
-            {/* Slideshow */}
             <div className="slideshow-container">
                 <img src={images[currentImageIndex]} alt="Market" className="slideshow-image" />
                 
-                {/* Navigation Arrows */}
+          
                 <div className="arrow-left" onClick={handlePrevious}>
-                    &lt; {/* Left arrow */}
+                    &lt; 
                 </div>
                 <div className="arrow-right" onClick={handleNext}>
-                    &gt; {/* Right arrow */}
+                    &gt; 
                 </div>
             </div>
 

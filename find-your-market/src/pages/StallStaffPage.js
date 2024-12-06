@@ -9,7 +9,7 @@ const StallStaffPage = () => {
     {
       id: 1,
       name: 'Stall 1',
-      location: 'Downtown Market',
+      location: 'Norwich',
       description: 'Fresh fruits and vegetables.',
       items: [],
       isEditing: false, 

@@ -6,7 +6,7 @@ const AppSettings = () => {
   const [notificationPreference, setNotificationPreference] = useState("all");
   const [locationAllowed, setLocationAllowed] = useState(true);
   const [dataAllowed, setDataAllowed] = useState(true);
-  const [showPopup, setShowPopup] = useState(false); // Popup state
+  const [showPopup, setShowPopup] = useState(false); 
 
 
   const handleNotificationChange = (e) => {
