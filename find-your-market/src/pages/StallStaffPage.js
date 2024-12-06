@@ -11,7 +11,7 @@ const StallStaffPage = () => {
       name: 'Stall 1',
       location: 'Norwich',
       description: 'Fresh fruits and vegetables.',
-      items: [],
+      items: [{id: 1, name: 'Cherries', quantity: 9}],
       isEditing: false, 
     },
   ]);
