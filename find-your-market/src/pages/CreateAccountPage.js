@@ -28,9 +28,13 @@ function CreateAccountPage() {
   const [newStallLocation, setNewStallLocation] = useState('');
   const [staffType, setStaffType] = useState(null); 
   const [staffTypeOptions, setStaffTypeOptions] = useState([
-    { value: 'Retailer', label: 'Retailer' },
-    { value: 'Wholesaler', label: 'Wholesaler' }
+    { value: 'Market 1', label: 'Market 1' },
+    { value: 'Market 2', label: 'Market 2' }, 
+    { value: 'Market 3', label: 'Market 3' }, 
   ]); 
+
+
+  const [showPasswordRequirements, setShowPasswordRequirements] = useState(false);
 
   const handleAddStallClick = () => {
     setShowAddStallForm(true);
@@ -40,13 +44,9 @@ function CreateAccountPage() {
     if (newStallName && newStallDescription && newStallLocation) {
       const newOption = { value: newStallName, label: newStallName };
 
-      // Update the options list with the new stall
+      
       setStaffTypeOptions((prevOptions) => [...prevOptions, newOption]);
-
-      // Automatically set the new stall as the selected option
       setStaffType(newOption);
-
-      // Reset and close the form
       setShowAddStallForm(false);
       setNewStallName('');
       setNewStallDescription('');
@@ -63,6 +63,7 @@ function CreateAccountPage() {
       setError('Please fill in all required fields.');
       return;
     }
+
 
 
     if (password !== confirmPassword) {
@@ -101,9 +102,19 @@ function CreateAccountPage() {
 
   
   const publicRoleOptions = [
-    { value: 'Customer', label: 'Customer' },
-    { value: 'Subscriber', label: 'Subscriber' }
+    { value: 'Norwich', label: 'Norwich' },
+    { value: 'Great Yarmouth', label: 'Great Yarmouth' }
   ];
+
+  
+    const handlePasswordRequirementsClick = () => {
+      setShowPasswordRequirements(true);
+    };
+  
+    
+    const handleClosePasswordRequirements = () => {
+      setShowPasswordRequirements(false);
+    };
 
 
   return (
@@ -200,7 +211,16 @@ function CreateAccountPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            
+             <button
+              type="button"
+              className="password-requirements-btn"
+              onClick={handlePasswordRequirementsClick}
+            >
+              ?
+            </button>
           </div>
+           
 
           <div className="input-group">
             <label htmlFor="confirm-password">Confirm Password</label>
@@ -255,7 +275,7 @@ function CreateAccountPage() {
 
           {accountType === 'Staff' && (
             <div className="input-group">
-              <label htmlFor="staff-type">Stall Name</label>
+              <label htmlFor="staff-type">Market Name</label>
               <Select
                 id="staff-type"
                 options={staffTypeOptions}
@@ -340,6 +360,17 @@ function CreateAccountPage() {
         buttonText="Okay"
         onConfirm={handleClosePopup}
         isError={true}
+      />
+
+    
+       <Popup
+        show={showPasswordRequirements}
+        onClose={handleClosePasswordRequirements}
+        title="Password Requirements"
+        message="Your password must be at least 8 characters long and contain both letters and numbers."
+        buttonText="Okay"
+        onConfirm={handleClosePasswordRequirements}
+        isError={false}
       />
 
       <img src={stallsImage} alt="Stalls" className="create-account-stalls" />

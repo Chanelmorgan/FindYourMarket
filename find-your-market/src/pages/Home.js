@@ -5,6 +5,7 @@ import chartImage1 from '../assets/images/todayChart.png';
 import chartImage2 from '../assets/images/monthChart.png'; 
 import heatImage from '../assets/images/newHeat.png'; 
 import video from '../assets/images/high_flashing.mp4'; 
+import Popup from '../components/Popup.js';
 
 const images = [
     chartImage1,
@@ -21,16 +22,24 @@ const stallsData = [
 
 function Home() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [showQuestionMark, setShowQuestionMark] = useState(false);
 
     const handleNext = () => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
     };
 
-   
     const handlePrevious = () => {
         setCurrentImageIndex(
             (prevIndex) => (prevIndex - 1 + images.length) % images.length
         );
+    };
+
+    const handleQuestionMarkClick = () => {
+        setShowQuestionMark(true);
+    };
+
+    const handleCloseQuestionMark = () => {
+        setShowQuestionMark(false);
     };
 
     return (
@@ -38,51 +47,66 @@ function Home() {
             <h2 className="home-title">Hello, Tara!</h2>
             <h3 className="pref-market">Norwich Market</h3>
             
-     
             <div className="curved-box">
-  <div className="content-container">
-    <span className="crowd-level-title">Live Crowd Level</span>
-    <video
-        className="video"
-        src={video}
-        type="video/mp4"
-        loop
-        muted
-        autoPlay
-        playsInline
-      />
-  </div>
-</div>
+                <div className="content-container">
+                    <span className="crowd-level-title">Live Crowd Level</span>
+                    <video
+                        className="video"
+                        src={video}
+                        type="video/mp4"
+                        loop
+                        muted
+                        autoPlay
+                        playsInline
+                    />
+                </div>
+            </div>
 
-            {/* Slideshow */}
+            <button
+                type="button"
+                className="password-requirements-btn"
+                onClick={handleQuestionMarkClick}
+            >
+                ?
+            </button>
+
             <div className="slideshow-container">
-                <img src={images[currentImageIndex]} alt="Market" className="slideshow-image" />
+                <img src={images[currentImageIndex]} alt="Market Charts" className="slideshow-image" />
                 
-                {/* Navigation Arrows */}
                 <div className="arrow-left" onClick={handlePrevious}>
-                    &lt; {/* Left arrow */}
+                    &lt;
                 </div>
                 <div className="arrow-right" onClick={handleNext}>
-                    &gt; {/* Right arrow */}
+                    &gt;
                 </div>
             </div>
 
-        <div className="stall-container">
-            <div className="titles">
-                <div className="home-stall-title">Stall</div>
-                <div className="home-OT-title">Opening Time</div>
+            <div className="stall-container">
+                <div className="titles">
+                    <div className="home-stall-title">Stall</div>
+                    <div className="home-OT-title">Opening Time</div>
+                </div>
+
+                <div className="stall-list">
+                    {stallsData.map((stall, index) => (
+                        <div key={index} className="stall-item">
+                            <a href="/Stall" className="stall-name">{stall.name}</a>
+                            <a href="/Stall" className="opening-time">{stall.openingTime}</a>
+                        </div>
+                    ))}
+                </div>
             </div>
 
-            <div className="stall-list">
-                {stallsData.map((stall, index) => (
-                    <div key={index} className="stall-item">
-                        <a href="/Stall" className="stall-name">{stall.name}</a>
-                        <a href="/Stall" className="opening-time">{stall.openingTime}</a>
-                    </div>
-                ))}
-            </div>
-        </div>
-    
+        
+            <Popup
+                show={showQuestionMark}
+                onClose={handleCloseQuestionMark}
+                title="Chart"
+                message="This is a chart."
+                buttonText="Okay"
+                onConfirm={handleCloseQuestionMark}
+                isError={false}
+            />
         </div>
     );
 }
