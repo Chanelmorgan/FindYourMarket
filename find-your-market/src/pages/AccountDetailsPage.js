@@ -178,9 +178,9 @@ const AccountDetails = () => {
                   onChange={(e) => setUser({...user, locationPreference: e.target.value})}
                   className="input"
                 >
-                  <option value="Nearby">Nearby</option>
-                  <option value="International">International</option>
-                  <option value="Remote">Remote</option>
+                  <option value="Nearby">Great Yarmouth</option>
+                  <option value="International">Norwich</option>
+                  <option value="Remote">Cambridge</option>
                 </select>
                 <FaSave className="editIcon" onClick={() => toggleEditField("locationPreference")} title="Save" />
               </>
@@ -193,7 +193,7 @@ const AccountDetails = () => {
           </div>
 
           <div className="detailGroup">
-            <label>Visit Preference:</label>
+            <label>Visit Time Preference:</label>
             {editingField === "visitPreference" ? (
               <>
                 <select
@@ -202,9 +202,9 @@ const AccountDetails = () => {
                   onChange={(e) => setUser({...user, visitPreference: e.target.value})}
                   className="input"
                 >
-                  <option value="Daily">Daily</option>
-                  <option value="Weekly">Weekly</option>
-                  <option value="Monthly">Monthly</option>
+                  <option value="Daily">01:00pm</option>
+                  <option value="Weekly">02:00pm</option>
+                  <option value="Monthly">03:00pm</option>
                 </select>
                 <FaSave className="editIcon" onClick={() => toggleEditField("visitPreference")} title="Save" />
               </>
