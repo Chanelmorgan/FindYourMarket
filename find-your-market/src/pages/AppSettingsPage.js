@@ -139,7 +139,7 @@ const AppSettings = () => {
         show={showPopup}
         onClose={handleClosePopup}
         title="Save Successful!"
-        message="Your Settings are now successfully saved :)"
+        message="Your settings are now successfully."
         buttonText="Save"
         onConfirm={handleClosePopup}
       /> 
