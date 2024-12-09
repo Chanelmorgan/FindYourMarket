@@ -1,8 +1,16 @@
 @import 'variables.css';
 
+body{
+    background-color: #e7f5eb;
+    color: #534757;
+    font-family: "Dongle", sans-serif; 
+}
+
 .stall-page-container {
-    padding: 20px;
-    margin-top: 80px;
+    padding-bottom: 10px;
+    padding-top: 80px;
+    padding-left: 10px;
+    padding-right: 10px;
     position: relative;
     display: flex; 
     flex-direction: column; 
@@ -11,35 +19,61 @@
     min-height: calc(100vh - 100px); 
 }
 
-.stall-page-title {
-    text-align: center;
-    font-size: 40px;
-    font-weight: bold;
-    margin-bottom: 20px;
+/* Container for the title and button */
+.stall-page-header {
+    display: flex;
+    align-items: center; /* Vertically aligns title and button */
+    justify-content: space-between; /* Title on the left, button on the right */
+    width: 95%; /* Ensures the header spans the full width */
+    padding: 0 20px; /* Adds some padding on the sides */
+    margin-bottom: 20px; /* Space below the header */
 }
 
+/* Title styling */
+.stall-page-title {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0; /* Removes default margins */
+    flex-shrink: 0; /* Prevents title from shrinking */
+}
+
+/* Button styling */
 .add-stall-btn {
-    background-color: var(--darkgreen);
+    display: flex; /* Flexbox for centering icon in the button */
+    align-items: center; /* Centers the icon vertically */
+    justify-content: center; /* Centers the icon horizontally */
+    background-color: #534757;
     color: white;
+    font-family: "Dongle", sans-serif;
     border: none;
     padding: 12px 18px;
-    font-size: 16px;
+    font-size: 30px;
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
-    position: absolute;
-    top: 20px; 
-    right: 10px; 
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* Fix icon alignment inside the button */
+.add-stall-btn svg {
+    display: inline-block;
+    vertical-align: middle; /* Ensures the icon aligns with text */
+    margin: 0; /* Removes extra spacing */
+    padding: 0; /* Removes unintended padding */
+    font-size: 24px; /* Adjust size to match button */
+}
+
+
 .add-stall-btn:hover {
-    background-color: var(--lightgreen);
+    background-color: #98849f;
     transform: translateY(-2px);
 }
 
 
+
 .stalls-container {
+    max-height: 600px; /* Set the desired height for the scrollable area */
+    overflow-y: auto; /* Enable vertical scrolling */
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -52,11 +86,15 @@
 
 
 .stall-card {
-    background-color: white;
-    border: 2px solid var(--darkgreen);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    background-color: #eadbef;
+    border: 2px solid #534757;
     border-radius: 8px;
-    padding: 20px;
-    width: 250px; 
+    width: 95%; 
+    font-size: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -64,18 +102,31 @@
 
 .stall-header {
     display: flex; 
-    align-items: center; 
+    text-align: left; 
     gap: 10px; 
 }
 
 .edit-icon {
+    margin-left: 7px;
     cursor: pointer;
     font-size: 1rem;
-    color: #4CAF50;
+    color: #534757;
     transition: transform 0.3s ease;
 }
 
 .edit-icon:hover {
+    transform: scale(1.2); 
+}
+
+.edit-icon-stall {
+    margin-top: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #534757;
+    transition: transform 0.3s ease;
+}
+
+.edit-icon-stall:hover {
     transform: scale(1.2); 
 }
 
@@ -102,8 +153,10 @@ select {
 }
 
 button {
+    font-family: "Dongle", sans-serif; 
     padding: 10px;
-    background-color: var(--darkgreen);
+    font-size: 30px;
+    background-color: #534757;
     color: white;
     border: none;
     border-radius: 4px;
@@ -129,6 +182,7 @@ button:hover {
 }
 
 .item-edit button {
+    font-family: "Dongle", sans-serif; 
     background-color: var(--darkgreen);
     color: white;
     border: none;
@@ -150,13 +204,20 @@ button:hover {
     margin-top: 5px;
 }
 
+.item-title{
+    font-size: 40px;
+    margin-top: 10px;
+}
 
 .items-list {
-    margin-top: 20px;
+    max-height: 150px; /* Set the desired height for the scrollable area */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-top: -20px;
 }
 
 
 .item-row {
+    margin-top: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;

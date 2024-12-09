@@ -133,10 +133,12 @@ const StallStaffPage = () => {
 
   return (
     <div className="stall-page-container">
-      <h1 className="stall-page-title">Your Stalls</h1>
-      <button className="add-stall-btn" onClick={openPopup}>
-        <FaPlus /> Add Stall
-      </button>
+      <div className="stall-page-header">
+        <h1 className="stall-page-title">Your Stalls</h1>
+        <button className="add-stall-btn" onClick={openPopup}>
+          <FaPlus />
+        </button>
+      </div>
 
       {isPopupOpen && (
         <div className="popup-overlay">
@@ -188,7 +190,7 @@ const StallStaffPage = () => {
               ) : (
                 <>
                   <h2>{stall.name}</h2>
-                  <FaEdit className="edit-icon" onClick={() => handleEditStall(stall.id)} />
+                  <FaEdit className="edit-icon-stall" onClick={() => handleEditStall(stall.id)} />
                 </>
               )}
             </div>
