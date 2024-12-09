@@ -94,13 +94,16 @@ body{
 
 
 .password-requirements-btn {
-  padding: 5px 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 0px;
+  padding-top: 0px;
   background-color: var(--darkgreen);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 20px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 30px;
 }
 
 .login-links {
