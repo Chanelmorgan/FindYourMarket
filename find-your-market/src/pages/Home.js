@@ -23,6 +23,7 @@ const stallsData = [
 function Home() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [showQuestionMark, setShowQuestionMark] = useState(false);
+    const [showOpeningTime, setShowOpeningTime] = useState(false);
 
     const handleNext = () => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -40,6 +41,14 @@ function Home() {
 
     const handleCloseQuestionMark = () => {
         setShowQuestionMark(false);
+    };
+    
+    const handleOpeningTimeClick = () => {
+        setShowOpeningTime(true);
+    };
+
+    const handleCloseOpeningTime = () => {
+        setShowOpeningTime(false);
     };
 
     return (
@@ -92,7 +101,7 @@ function Home() {
                     {stallsData.map((stall, index) => (
                         <div key={index} className="stall-item">
                             <a href="/Stall" className="stall-name">{stall.name}</a>
-                            <a href="/Stall" className="opening-time">{stall.openingTime}</a>
+                            <a onClick={handleOpeningTimeClick} className="opening-time">{stall.openingTime}</a>
                         </div>
                     ))}
                 </div>
@@ -106,6 +115,16 @@ function Home() {
                 message="Chart explained in detail"
                 buttonText="Okay"
                 onConfirm={handleCloseQuestionMark}
+                isError={false}
+            />
+
+            <Popup
+                show={showOpeningTime}
+                onClose={handleCloseOpeningTime}
+                title="Stall Closed"
+                message="Recommend another stall/market"
+                buttonText="Okay"
+                onConfirm={handleCloseOpeningTime}
                 isError={false}
             />
         </div>
