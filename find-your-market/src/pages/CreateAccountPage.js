@@ -27,6 +27,12 @@ function CreateAccountPage() {
   const [newStallDescription, setNewStallDescription] = useState('');
   const [newStallLocation, setNewStallLocation] = useState('');
   const [staffType, setStaffType] = useState(null); 
+  const [visitTimePreference, setVisitTimePreference] = useState(null);
+  const visitTimeOptions = [
+    { value: 'Morning', label: 'Morning' },
+    { value: 'Afternoon', label: 'Afternoon' },
+    { value: 'Evening', label: 'Evening' }
+  ];
   const [staffTypeOptions, setStaffTypeOptions] = useState([
     { value: 'Market 1', label: 'Market 1' },
     { value: 'Market 2', label: 'Market 2' }, 
@@ -203,7 +209,16 @@ function CreateAccountPage() {
           </div>
 
           <div className="input-group">
-            <label htmlFor="password">Password</label>
+            <div className="password-label-container">
+              <label htmlFor="password">Password</label>
+              <button
+                type="button"
+                className="password-requirements-btn"
+                onClick={handlePasswordRequirementsClick}
+              >
+                ?
+              </button>
+            </div>
             <input
               type="password"
               id="password"
@@ -211,16 +226,7 @@ function CreateAccountPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            
-             <button
-              type="button"
-              className="password-requirements-btn"
-              onClick={handlePasswordRequirementsClick}
-            >
-              ?
-            </button>
           </div>
-           
 
           <div className="input-group">
             <label htmlFor="confirm-password">Confirm Password</label>
@@ -261,12 +267,22 @@ function CreateAccountPage() {
             <div className="input-group">
               <label htmlFor="public-role">Location Preferences</label>
               <Select
+                className="location-pref-dropdown"
                 id="public-role"
                 options={publicRoleOptions}
                 value={publicRole}
                 onChange={setPublicRole}
                 placeholder="Select "
                 isSearchable={true}
+              />
+              <label htmlFor="visit-time">Visit Time Preference</label>
+                <Select
+                className="visit-time-dropdown"
+                id="visit-time"
+                options={visitTimeOptions}
+                value={visitTimePreference}
+                onChange={setVisitTimePreference}
+                placeholder="Select Visit Time"
               />
             </div>
             
@@ -277,6 +293,7 @@ function CreateAccountPage() {
             <div className="input-group">
               <label htmlFor="staff-type">Market Name</label>
               <Select
+                className="stall-name-dropdown"
                 id="staff-type"
                 options={staffTypeOptions}
                 value={staffType}
@@ -284,12 +301,12 @@ function CreateAccountPage() {
                 placeholder="Stall Name"
                 isSearchable={true}
               />
-               <p className="add-stall-link" onClick={handleAddStallClick}>
+              <p className="add-stall-link" onClick={handleAddStallClick}>
                     + Add New Stall
               </p>
             </div>
           )}
-             {showAddStallForm && (
+        {showAddStallForm && (
         <div className="new-stall-form">
           <h3>Add New Stall</h3>
           <div className="input-group">
