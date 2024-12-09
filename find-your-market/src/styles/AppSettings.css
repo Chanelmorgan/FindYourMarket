@@ -84,8 +84,8 @@
 
 .settings-section button {
   padding: 8px 15px;
-  background-color: var(--mustard);
-  border: 2px solid #7d620b;
+  background-color: #f06b6b;
+  border: 2px solid #bababa;
   border-radius: 4px;
   font-size: 30px;
   cursor: pointer;
@@ -93,11 +93,11 @@
 }
 
 .settings-section button:hover {
-  background-color: #bcb2de;
+  background-color: #68b667;
 }
 
 .settings-section button:active {
-  background-color: #f8db7b;
+  background-color: #f06b6b;
 }
 
 .permission-text{
