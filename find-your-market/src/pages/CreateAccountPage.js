@@ -362,7 +362,7 @@ function CreateAccountPage() {
         show={showPopup && isErrorPopup}
         onClose={handleClosePopup}
         title="Error"
-        message="Passwords do not match          Please try again"
+        message="Passwords do not match. Please try again."
         buttonText="Okay"
         onConfirm={handleClosePopup}
         isError={true}

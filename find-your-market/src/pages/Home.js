@@ -62,13 +62,7 @@ function Home() {
                 </div>
             </div>
 
-            <button
-                type="button"
-                className="password-requirements-btn"
-                onClick={handleQuestionMarkClick}
-            >
-                ?
-            </button>
+            
 
             <div className="slideshow-container">
                 <img src={images[currentImageIndex]} alt="Market Charts" className="slideshow-image" />
@@ -79,6 +73,13 @@ function Home() {
                 <div className="arrow-right" onClick={handleNext}>
                     &gt;
                 </div>
+                <button
+                    type="button"
+                    className="chart-explain-btn"
+                    onClick={handleQuestionMarkClick}
+                >
+                    ?
+                </button>
             </div>
 
             <div className="stall-container">
@@ -102,7 +103,7 @@ function Home() {
                 show={showQuestionMark}
                 onClose={handleCloseQuestionMark}
                 title="Chart"
-                message="This is a chart."
+                message="Chart explained in detail"
                 buttonText="Okay"
                 onConfirm={handleCloseQuestionMark}
                 isError={false}

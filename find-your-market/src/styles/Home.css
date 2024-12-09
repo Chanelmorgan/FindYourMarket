@@ -83,6 +83,20 @@ body{
     border: none;
 }
 
+.chart-explain-btn {
+    position: absolute; /* Allow precise positioning */
+    right: 10px; /* Adjust distance from the right edge */
+    top: 13%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for exact vertical centering */
+    padding: 5px 10px;
+    background-color: #534757;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
 .stall-container {
     margin-top: 10px;
     display: flex;
