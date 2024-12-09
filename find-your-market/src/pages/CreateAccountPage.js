@@ -79,14 +79,13 @@ function CreateAccountPage() {
       return;
     }
 
-     
-       if (password =="incorrect"){
-        setError('Password is incorrect. It must be at least 8 characters long and contain both letters and numbers.');
-        setIsIncorrectPasswordPopup(true); 
-        setIsErrorPopup(false); 
-        setShowPopup(true);
-        return;
-      }
+    if (password =="incorrect"){
+      setError('Password is incorrect. It must be at least 8 characters long and contain both letters and numbers.');
+      setIsIncorrectPasswordPopup(true); 
+      setIsErrorPopup(false); 
+      setShowPopup(true);
+      return;
+    }
 
     setError('');
     setIsErrorPopup(false);
@@ -363,7 +362,7 @@ function CreateAccountPage() {
         show={showPopup && isErrorPopup}
         onClose={handleClosePopup}
         title="Error"
-        message="Passwords do not match. Please try again."
+        message="Passwords do not match          Please try again"
         buttonText="Okay"
         onConfirm={handleClosePopup}
         isError={true}

@@ -27,9 +27,9 @@
 
 
 .popup-content.error {
-  background: var(--coral); 
-  border: 3px solid var(--coral); 
+  border: 6px solid var(--coral); 
 }
+
 
 .popup-content h2 {
   color: #534757;
