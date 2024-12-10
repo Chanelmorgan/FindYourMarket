@@ -80,7 +80,7 @@ body{
 .video {
     width: 45px;
     height: auto;
-    border: none;
+    border: transparent;
 }
 
 .chart-explain-btn {

@@ -7,15 +7,15 @@ import profileImage from '../assets/images/profile.png';
 
 const AccountDetails = () => {
   const [user, setUser] = useState({
-    firstName: "Chanel",
-    lastName: "Morgan",
-    email: "chanel@uea.ac.uk",
+    firstName: "Tara",
+    lastName: "Smith",
+    email: "tara@uea.ac.uk",
     phone: "+1234567890",
     addressLine1: "123 Norwich Road",
     addressLine2: "Apt 4B",
     postcode: "12345",
     password: "password123",
-    accountType: "Staff", 
+    accountType: "Public", 
     locationPreference: "Nearby", 
     visitPreference: "Daily",  
     profilePhoto: profileImage,
